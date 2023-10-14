@@ -1,0 +1,12 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none !important;
+}
+p{
+  margin: 0px;
+  padding: 0px;
+}

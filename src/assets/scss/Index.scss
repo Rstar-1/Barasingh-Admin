@@ -1,0 +1,364 @@
+/* ======================= Start-Color ======================= */
+$primary: #ff475b !important;
+$secondary: #335080 !important;
+$tertiary: #f2f2f2 !important;
+$forth: #212529 !important;
+$success: #4bb543 !important;
+$warning: #ff5722 !important;
+$danger: red !important;
+$info: #2196f3 !important;
+$white: #fff !important;
+$dark: #000 !important;
+$gray: gray !important;
+/* ======================= End-Color ======================= */
+
+/* ======================= Start-Bg-Color ======================= */
+.bgprimary {
+  background: $primary;
+}
+.bgsecondary {
+  background: $secondary;
+}
+.bgtertiary {
+  background: $tertiary;
+}
+.bgforth {
+  background: $forth;
+}
+.bgsuccess {
+  background: $success;
+}
+.bgwarning {
+  background: $warning;
+}
+.bgdanger {
+  background: $danger;
+}
+.bginfo {
+  background: $info;
+}
+.bgwhite {
+  background: $white;
+}
+.bggray {
+  background: $gray;
+}
+.bgdark {
+  background: $dark;
+}
+.bg-ec {
+  background-color: #ececec !important;
+}
+.bg-purple {
+  background-color: #6610f2 !important;
+}
+.bg-blues {
+  background-color: #000940 !important;
+}
+.bg-glass {
+  background: rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.2px);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+}
+/* ======================= End-Bg-Color ======================= */
+
+/* ======================= Start-Text-Color ======================= */
+.textprimary {
+  color: $primary;
+}
+.textsecondary {
+  color: $secondary;
+}
+.texttertiary {
+  color: $tertiary;
+}
+.textforth {
+  color: $forth;
+}
+.textsuccess {
+  color: $success;
+}
+.textwarning {
+  color: $warning;
+}
+.textdanger {
+  color: $danger;
+}
+.textinfo {
+  color: $info;
+}
+.textwhite {
+  color: $white;
+}
+.textgray {
+  color: $gray;
+}
+.textdark {
+  color: $dark;
+}
+/* ======================= End-Text-Color ======================= */
+
+/* ======================= Start-Font-Family ======================= */
+@font-face {
+  font-family: "poppins-regular";
+  src: local("poppins-regular"),
+    url("../fonts/Poppins/Poppins-Regular.ttf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+body {
+  font-family: "poppins-regular" !important;
+}
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+li {
+  font-family: "poppins-regular" !important;
+}
+/* ======================= End-Font-Family ======================= */
+
+/* ======================= Start-Navbar ======================= */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primary;
+}
+/* ======================= End-Navbar ======================= */
+
+/* ======================= Start-Button ======================= */
+.bgp-outline {
+  background: transparent !important;
+  border: 1px solid #fff !important;
+  color: #fff !important;
+}
+.bgp-outline:hover {
+  background: #fff !important;
+  color: #222 !important;
+}
+/* ======================= End-Button ======================= */
+
+/* ======================= Start-Navbar ======================= */
+.logo {
+  width: 25% !important;
+   @media (max-width:640px) {
+     width: 100% !important;
+  }
+}
+.menu {
+  width: 75% !important;
+}
+.navbtn {
+  width: 25% !important;
+}
+.sidebar-icon{
+  width: 40px !important;
+  height: 40px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+/* ======================= End-Navbar ======================= */
+
+/* ======================= Start-Footer ======================= */
+.footlogo {
+  width: 25% !important;
+  @media (max-width:640px) {
+     width: 100% !important;
+  }
+}
+.footcontent {
+  width: 75% !important;
+  @media (max-width:640px) {
+     width: 100% !important;
+  }
+}
+.footerimg {
+  width: 80% !important;
+  height: 150px !important;
+  @media (max-width:640px) {
+     width: 100% !important;
+     
+  }
+}
+.foot-hr {
+  width: 20% !important;
+  height: 6px !important;
+}
+.social-foot {
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 50% !important;
+}
+/* ======================= End-Footer ======================= */
+
+/* ======================= Start-Banner ======================= */
+.h-banner {
+  width: 100% !important;
+  height: 90vh !important;
+  @media (max-width:640px) {
+    height: 650px !important;
+  }
+}
+.banner-img {
+  width: 100% !important;
+  height: 500px !important;
+  @media (max-width:640px) {
+    height: 290px !important;
+  }
+}
+/* ======================= End-Banner ======================= */
+
+/* ======================= Start-About ======================= */
+.about-img {
+  width: 100% !important;
+  height: 400px !important;
+  @media (max-width:640px) {
+    height: 220px !important;
+  }
+}
+.about2-img {
+  width: 100% !important;
+  height: 500px !important;
+  @media (max-width:640px) {
+    height: 220px !important;
+  }
+}
+/* ======================= End-About ======================= */
+
+/* ======================= Start-Service ======================= */
+.service-card {
+  height: 230px !important;
+}
+.service-img {
+  width: 40px !important;
+  height: 40px !important;
+}
+.service-dot {
+  width: 70px !important;
+  height: 70px !important;
+  border-radius: 50% !important;
+}
+/* ======================= End-Service ======================= */
+
+/* ======================= Start-Gallery ======================= */
+.gallery-img {
+  width: 100% !important;
+  height: 250px !important;
+}
+.border-pr {
+  border-bottom: 2px solid #ff475b !important;
+}
+.width-gall {
+  width: 100px !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+/* ======================= End-Gallery ======================= */
+
+/* ======================= Start-Maincss ======================= */
+.list-none {
+  list-style: none !important;
+}
+.cursor-pointer {
+  cursor: pointer !important;
+}
+.error-h{
+  height: 100vh !important;
+  @media (max-width:640px) {
+    height: 60vh !important;
+  }
+}
+.up-box{
+  width: 50px !important;
+  height: 50px !important;
+  @media (max-width:640px) {
+    width: 40px !important;
+  height: 40px !important;
+  }
+}
+.up-img{
+  width: 25px !important;
+  height: 25px !important;
+  @media (max-width:640px) {
+    width: 20px !important;
+  height: 20px !important;
+  }
+}
+.z-999 {
+  z-index: 9999 !important;
+}
+.h-100 {
+  height: 100vh !important;
+}
+.disc {
+  list-style: decimal !important;
+}
+.dot {
+  width: 12px !important;
+  height: 12px !important;
+}
+.border-0 {
+  border: none !important;
+}
+.border-ec {
+  border: 1px solid #ececec !important;
+}
+.center-absolute {
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+.input-css {
+  border: 1px solid #ececec !important;
+  height: 38px !important;
+  border-radius: 6px !important;
+  padding-left: 12px !important;
+}
+/* ======================= End-Maincss ======================= */
+
+/* ======================= Start-Animatedcss ======================= */
+.marquee p {
+  transform: translateX(100%);
+  animation: scroll-left 10s linear infinite;
+}
+@keyframes scroll-left {
+  0% {
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+  100% {
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+.clip {
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%) !important;
+}
+.rotate-d {
+  transform: rotate(20deg) !important;
+}
+/* ======================= End-Animatedcss ======================= */
+
+.liner-color {
+  background: linear-gradient(#e66465, #9198e5) !important;
+}
+.liner-color2 {
+  background: linear-gradient(0.25turn, #3f87a6, #f69d3c);
+}
