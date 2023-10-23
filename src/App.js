@@ -1,42 +1,34 @@
-import "./index.css";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
-import Home from "./pages/home/Home";
 import Error from "./pages/error/Error";
-import Navbar from "./pages/navbar/Navbar";
-import Footer from "./pages/footer/Footer";
+import Sidebar from "./pages/admin/sidebar/Sidebar";
+import Header from "./pages/admin/layouts/header/Header";
+import Dashboard from "./pages/admin/layouts/components/dashboard/Dashboard";
+import Crm from "./pages/admin/layouts/components/crm/Crm";
 
 const  App = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  };
   return (
     <div className="App relative">
       <Router>
-        <Navbar />
-        <Routes>
-          {/* ======================= Start-pages ======================= */}
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          {/* ======================= End-pages ======================= */}
+        <div className="flex gap-9 bg-f4f5f6 h-100 overflow-hidden ">
+          <div className="w-side">
+            <Sidebar />
+          </div>
+          <div className="w-route">
+            <Header />
+            <Routes>
+              {/* ======================= Start-pages ======================= */}
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/crm" element={<Crm />} />
+              {/* ======================= End-pages ======================= */}
 
-          {/* ======================= Start-Error ======================= */}
-          <Route path="*" element={<Error />} />
-          {/* ======================= End-Error ======================= */}
-        </Routes>
-        <Footer />
-      </Router>
-      <div className="fixed bottom-0 right-0">
-        <div
-          className="bgsecondary cursor-pointer up-box rounded-full flex justify-center items-center m10"
-          onClick={scrollToTop}
-        >
-          <img
-            src="https://i.imgur.com/MEcgvFc.png"
-            alt="upimg"
-            className="up-img"
-          />
+              {/* ======================= Start-Error ======================= */}
+              <Route path="*" element={<Error />} />
+              {/* ======================= End-Error ======================= */}
+            </Routes>
+          </div>
         </div>
-      </div>
+      </Router>
     </div>
   );
 }
