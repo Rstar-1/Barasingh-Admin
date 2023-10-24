@@ -46,6 +46,15 @@ $gray: gray !important;
 .bgdark {
   background: $dark;
 }
+.bg-light-success {
+  background: rgb(238, 243, 238) !important;
+}
+.bg-light-warning {
+  background: rgb(244, 243, 240) !important;
+}
+.bg-light-danger {
+  background: rgb(243, 239, 239)!important;
+}
 .bg-ec {
   background-color: #ececec !important;
 }
@@ -206,6 +215,24 @@ li {
   height: 150px !important;
 }
 /* ======================= End-dashboard ======================= */
+
+/* ======================= Start-crm ======================= */
+.crm-h{
+  height: 80vh !important;
+  overflow-y: auto !important;
+}
+/* ======================= End-crm ======================= */
+
+/* ======================= Start-blog ======================= */
+.blog-h{
+  height: 80vh !important;
+  overflow-y: auto !important;
+}
+.blog-img{
+  width: 100% !important;
+  height: 50px !important;
+}
+/* ======================= End-blog ======================= */
 
 /* ======================= Start-crm ======================= */
 .crm-h{
