@@ -13,7 +13,7 @@ const Seo = () => {
             <div className="w-60">
               <div className="relative">
                 <input
-                  className="w-full h-search fsize14 rounded-5 plpx10 border-ec"
+                  className="w-full h-input fsize14 rounded-5 plpx10 border-ec"
                   placeholder="Search"
                 />
                 <div className="absolute top-0 right-0 mtpx9 mrpx2">

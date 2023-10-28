@@ -53,19 +53,19 @@ const CmsPages = () => {
               <div className="border-ec p15 rounded-5">
                 <div className="bg-ec p80 rounded-5"></div>
                 <div className="w-full mtpx10">
-                  <label className="fsize15 textforth">Title</label>
+                  <label className="fsize12 textforth">Title</label>
                   <div>
                     <input
-                      className="w-80 mtpx5 h-search fsize14 rounded-5 plpx10 border-ec"
+                      className="w-80 mtpx5 h-input fsize12 rounded-5 plpx10 border-ec"
                       placeholder="Search"
                     />
                   </div>
                 </div>
                 <div className="w-full mtpx10">
-                  <label className="fsize15 textforth">Sub Title</label>
+                  <label className="fsize12 textforth">Sub Title</label>
                   <div>
                     <input
-                      className="w-80 mtpx5 h-search fsize14 rounded-5 plpx10 border-ec"
+                      className="w-80 mtpx5 h-input fsize12 rounded-5 plpx10 border-ec"
                       placeholder="Search"
                     />
                   </div>
@@ -74,28 +74,28 @@ const CmsPages = () => {
               <div className="border-ec p15 rounded-5">
                 <div className="bg-ec p80 rounded-5"></div>
                 <div className="w-full mtpx10">
-                  <label className="fsize15 textforth">Sub Title</label>
+                  <label className="fsize12 textforth">Sub Title</label>
                   <div>
                     <input
-                      className="w-80 mtpx5 h-search fsize14 rounded-5 plpx10 border-ec"
+                      className="w-80 mtpx5 h-input fsize12 rounded-5 plpx10 border-ec"
                       placeholder="Search"
                     />
                   </div>
                 </div>
                 <div className="w-full mtpx10">
-                  <label className="fsize15 textforth">Title</label>
+                  <label className="fsize12 textforth">Title</label>
                   <div>
                     <input
-                      className="w-80 mtpx5 h-search fsize14 rounded-5 plpx10 border-ec"
+                      className="w-80 mtpx5 h-input fsize12 rounded-5 plpx10 border-ec"
                       placeholder="Search"
                     />
                   </div>
                 </div>
                 <div className="w-full mtpx10">
-                  <label className="fsize15 textforth">Sub Title</label>
+                  <label className="fsize12 textforth">Sub Title</label>
                   <div>
                     <input
-                      className="w-80 mtpx5 h-search fsize14 rounded-5 plpx10 border-ec"
+                      className="w-80 mtpx5 h-input fsize12 rounded-5 plpx10 border-ec"
                       placeholder="Search"
                     />
                   </div>
@@ -106,28 +106,28 @@ const CmsPages = () => {
               <div className="border-ec p15 rounded-5">
                 <div className="bg-ec p80 rounded-5"></div>
                 <div className="w-full mtpx10">
-                  <label className="fsize15 textforth">Title</label>
+                  <label className="fsize12 textforth">Title</label>
                   <div>
                     <input
-                      className="w-80 mtpx5 h-search fsize14 rounded-5 plpx10 border-ec"
+                      className="w-80 mtpx5 h-input fsize12 rounded-5 plpx10 border-ec"
                       placeholder="Search"
                     />
                   </div>
                 </div>
                 <div className="w-full mtpx10">
-                  <label className="fsize15 textforth">Sub Title</label>
+                  <label className="fsize12 textforth">Sub Title</label>
                   <div>
                     <input
-                      className="w-80 mtpx5 h-search fsize14 rounded-5 plpx10 border-ec"
+                      className="w-80 mtpx5 h-input fsize12 rounded-5 plpx10 border-ec"
                       placeholder="Search"
                     />
                   </div>
                 </div>
                 <div className="w-full mtpx10">
-                  <label className="fsize15 textforth">Sub Title</label>
+                  <label className="fsize12 textforth">Sub Title</label>
                   <div>
                     <input
-                      className="w-80 mtpx5 h-search fsize14 rounded-5 plpx10 border-ec"
+                      className="w-80 mtpx5 h-input fsize12 rounded-5 plpx10 border-ec"
                       placeholder="Search"
                     />
                   </div>
@@ -136,19 +136,19 @@ const CmsPages = () => {
               <div className="border-ec p15 rounded-5">
                 <div className="bg-ec p80 rounded-5"></div>
                 <div className="w-full mtpx10">
-                  <label className="fsize15 textforth">Title</label>
+                  <label className="fsize12 textforth">Title</label>
                   <div>
                     <input
-                      className="w-80 mtpx5 h-search fsize14 rounded-5 plpx10 border-ec"
+                      className="w-80 mtpx5 h-input fsize12 rounded-5 plpx10 border-ec"
                       placeholder="Search"
                     />
                   </div>
                 </div>
                 <div className="w-full mtpx10">
-                  <label className="fsize15 textforth">Sub Title</label>
+                  <label className="fsize12 textforth">Sub Title</label>
                   <div>
                     <input
-                      className="w-80 mtpx5 h-search fsize14 rounded-5 plpx10 border-ec"
+                      className="w-80 mtpx5 h-input fsize12 rounded-5 plpx10 border-ec"
                       placeholder="Search"
                     />
                   </div>

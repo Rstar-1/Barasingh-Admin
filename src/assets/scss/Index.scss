@@ -294,6 +294,17 @@ li {
 }
 /* ======================= End-cms ======================= */
 
+/* ======================= Start-bill ======================= */
+.billing-h{
+  height: 80vh !important;
+  overflow-y: auto !important;
+}
+.bill-img{
+  width: 50px!important;
+  height: 50px !important;
+}
+/* ======================= End-bill ======================= */
+
 /* ======================= Start-loader ======================= */
 .loader {
   border: 2px solid transparent;
@@ -445,7 +456,7 @@ th{
 tr:nth-child(even):hover{
  background-color: #fafafa;
 }
-.h-search{
+.h-input{
   height: 35px !important;
 }
 /* ======================= End-Maincss ======================= */
