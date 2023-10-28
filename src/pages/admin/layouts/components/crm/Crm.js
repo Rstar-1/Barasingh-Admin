@@ -9,9 +9,9 @@ const Crm = () => {
     { value: "vanilla", label: "Vanilla" },
   ];
   return (
-    <div className="bgwhite border-d mtpx12 crm-h p20">
+    <div className="bgwhite border-d mtpx9 crm-h p20">
       <div className="">
-        <h6 className="fsize20 textsecondary mtpx1 mbpx1 font-600">
+        <h6 className="fsize20 textforth mtpx1 mbpx1 font-600">
           Customer relationship management (CRM)
         </h6>
         <div className="mtpx18 rounded-10 border-ec p20">
@@ -42,19 +42,19 @@ const Crm = () => {
           <table>
             <thead>
               <tr>
-                <th className="fsize13 textforth">
+                <th className="fsize13 textwhite font-300">
                   <p>First Name</p>
                 </th>
-                <th className="fsize13 textforth">
+                <th className="fsize13 textwhite font-300">
                   <p>Last Name</p>
                 </th>
-                <th className="fsize13 textforth">
+                <th className="fsize13 textwhite font-300">
                   <p>Email</p>
                 </th>
-                <th className="fsize13 textforth">
+                <th className="fsize13 textwhite font-300">
                   <p>Role</p>
                 </th>
-                <th className="fsize13 textforth">
+                <th className="fsize13 textwhite font-300">
                   <p>Actions</p>
                 </th>
               </tr>
@@ -230,7 +230,6 @@ const Crm = () => {
               </tr>
             </tbody>
           </table>
-          
         </div>
       </div>
     </div>

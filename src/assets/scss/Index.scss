@@ -1,8 +1,8 @@
 /* ======================= Start-Color ======================= */
 $primary: #ff475b !important;
-$secondary: #335080 !important;
-$tertiary: #90a0b7 !important;
-$forth: #525252 !important;
+$secondary: #7367f0 !important;
+$tertiary: #1f1f1f !important;
+$forth: #555 !important;
 $success: #4bb543 !important;
 $warning: #ff5722 !important;
 $danger: red !important;
@@ -64,6 +64,9 @@ $gray: gray !important;
 .bg-f4f5f6 {
   background: #f4f5f6 !important;
 }
+.bg-e8f2fc {
+  background: #e8f2fc !important;
+}
 .bg-blues {
   background-color: #000940 !important;
 }
@@ -73,11 +76,18 @@ $gray: gray !important;
   backdrop-filter: blur(4.2px);
   border: 1px solid rgba(255, 255, 255, 0.13);
 }
+.bg-glass2 {
+  background: rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(1.7px);
+}
 .liner-color {
-  background: linear-gradient(#e66465, #9198e5) !important;
+  background: linear-gradient(45deg,#e66465, #9198e5) !important;
 }
 .liner-color2 {
-  background: linear-gradient(0.25turn, #3f87a6, #f69d3c);
+  background: linear-gradient(45deg, #3f87a6, #f69d3c);
+}
+.liner-color3 {
+  background: linear-gradient(45deg, #0045c7, #ff2c7d);
 }
 /* ======================= End-Bg-Color ======================= */
 
@@ -172,7 +182,11 @@ li {
   color: gray;
 }
 .active{
-  color: $primary;
+  color: $secondary;
+}
+.hover-col:hover{
+  background: #fafafa;
+  border-radius: 4px;
 }
 /* ======================= End-Sidebar ======================= */
 
@@ -197,9 +211,31 @@ li {
   width: 40px !important;
   height: 40px !important;
 }
+.dash2img {
+  width: 100% !important;
+  height: 70px !important;
+}
+.filter-dash{
+ filter: brightness(2);
+}
+.dot-dash {
+  width: 20px !important;
+  height: 20px !important;
+}
+.h-map {
+  height: 170px !important;
+}
 .dash22-logo {
   width: 45px !important;
   height: 45px !important;
+}
+.social-img {
+  width: 60px !important;
+  height: 60px !important;
+}
+.gol-img {
+  width: 130px !important;
+  height: 130px !important;
 }
 .leading{
   line-height: 25px !important;
@@ -207,12 +243,22 @@ li {
 .next{
   width: 30px !important;
   height: 30px !important;
-  background: #f1f1f1 !important;
+  background: #efeff2 !important;
   border-radius: 50% !important;
 }
 .dash-images{
   width: 100% !important;
   height: 150px !important;
+}
+.profile-images{
+  width: 60px !important;
+  height: 60px !important;
+}
+.border-white{
+  border: 10px solid #fff !important;
+}
+.minus-dash{
+  margin-top: -50px !important;
 }
 /* ======================= End-dashboard ======================= */
 
@@ -234,12 +280,19 @@ li {
 }
 /* ======================= End-blog ======================= */
 
-/* ======================= Start-crm ======================= */
-.crm-h{
+/* ======================= Start-cms ======================= */
+.cms-h{
   height: 80vh !important;
   overflow-y: auto !important;
 }
-/* ======================= End-crm ======================= */
+.cms-img{
+  width: 100% !important;
+  height: 50px !important;
+}
+.hover-cms{
+  background: #e9e9f6;
+}
+/* ======================= End-cms ======================= */
 
 /* ======================= Start-loader ======================= */
 .loader {
@@ -365,7 +418,7 @@ p {
   width: 83% !important;
 }
 .cust-scroll{
-  height: 52vh !important;
+  height: 87vh !important;
   overflow-y: auto !important;
 }
 .theads{
@@ -378,13 +431,16 @@ table {
   border-collapse: collapse;
   width: 100%;
 }
-td, th {
+td {
   border: 1px solid #ececec;
   text-align: left;
   padding: 8px;
 }
-th {
-  background-color: #f4f5f8;
+th{
+  background: $secondary;
+  border: 1px solid #fff;
+  text-align: left;
+  padding: 10px;
 }
 tr:nth-child(even):hover{
  background-color: #fafafa;
@@ -417,4 +473,35 @@ tr:nth-child(even):hover{
 .rotate-d {
   transform: rotate(20deg) !important;
 }
+.dashboard .CircularProgressbar .CircularProgressbar-path{
+ stroke: $secondary;
+}
+.dashboard .CircularProgressbar .CircularProgressbar-text{
+ fill: $secondary;
+}
 /* ======================= End-Animatedcss ======================= */
+.tab input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+.tab__content {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.tab input:checked ~ .tab__content {
+  max-height: 100%;
+}
+.tab__label::after {  
+  width: 1em;
+  height: 100%;
+  text-align: center;
+  transform: rotate(90deg);
+  transition: all 0.3s;
+}
+.tab input:checked + .tab__label::after {
+  transform: rotate(270deg);
+}

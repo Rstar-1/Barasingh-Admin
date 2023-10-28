@@ -5,8 +5,8 @@ const Seo = () => {
   return (
     <div className="bgwhite border-d mtpx12 crm-h p20">
       <div className="">
-        <h6 className="fsize20 textsecondary mtpx1 mbpx1 font-600">
-          Search Engine Optimization (Seo)
+        <h6 className="fsize20 textorth mtpx1 mbpx1 font-600">
+          Search Engine Optimization (SEO)
         </h6>
         <div className="mtpx18 rounded-10 border-ec p20">
           <div className="mtpx5 mbpx15 flex gap-12 items-center">
@@ -29,19 +29,19 @@ const Seo = () => {
           <table>
             <thead>
               <tr>
-                <th className="fsize13 textforth">
+                <th className="fsize13 textwhite font-300">
                   <p>Meta Title</p>
                 </th>
-                <th className="fsize13 textforth">
+                <th className="fsize13 textwhite font-300">
                   <p>Meta Keyword</p>
                 </th>
-                <th className="fsize13 textforth">
+                <th className="fsize13 textwhite font-300">
                   <p>Meta Description</p>
                 </th>
-                <th className="fsize13 textforth">
+                <th className="fsize13 textwhite font-300">
                   <p>Canonicals Tags</p>
                 </th>
-                <th className="fsize13 textforth">
+                <th className="fsize13 textwhite font-300">
                   <p>Actions</p>
                 </th>
               </tr>

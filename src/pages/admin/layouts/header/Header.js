@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from "../../../../assets/download.png";
+import Logo from "../../../../assets/new.png";
 import FeatherIcon from 'feather-icons-react';
 
 const Header = () => {

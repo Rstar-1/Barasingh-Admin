@@ -11,7 +11,7 @@ const Elearning = () => {
   return (
     <div className="bgwhite border-d mtpx12 blog-h p20">
       <div className="">
-        <h6 className="fsize20 textsecondary mtpx1 mbpx1 font-600">
+        <h6 className="fsize20 textforth mtpx1 mbpx1 font-600">
           Elearning
         </h6>
         <div className="mtpx18 rounded-10 border-ec p20">
@@ -42,22 +42,22 @@ const Elearning = () => {
           <table>
             <thead>
               <tr>
-                <th className="fsize13 w-10 textforth">
+                <th className="fsize13 w-10 textwhite font-300">
                   <p>Image</p>
                 </th>
-                <th className="fsize13 w-20 textforth">
+                <th className="fsize13 w-20 textwhite font-300">
                   <p>Title</p>
                 </th>
-                <th className="fsize13 w-20 textforth">
+                <th className="fsize13 w-20 textwhite font-300">
                   <p>Description</p>
                 </th>
-                <th className="fsize13 w-20 textforth">
+                <th className="fsize13 w-20 textwhite font-300">
                   <p>Created Date</p>
                 </th>
-                <th className="fsize13 w-20 textforth">
+                <th className="fsize13 w-20 textwhite font-300">
                   <p>Category</p>
                 </th>
-                <th className="fsize13 w-10 textforth">
+                <th className="fsize13 w-10 textwhite font-300">
                   <p>Status</p>
                 </th>
               </tr>
