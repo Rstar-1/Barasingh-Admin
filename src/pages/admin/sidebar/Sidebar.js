@@ -90,7 +90,7 @@ const Sidebar = () => {
                   Home
                 </div>
                 <div className="flex items-center gap-4">
-                  <p className="fsize12 dot-dash rounded-full flex items-center justify-center textwhite bgsecondary">
+                  <p className="fsize12 dot-dash rounded-full flex items-center justify-center textwhite bgprimary">
                     {sidebarmenu.length}
                   </p>
                   <FeatherIcon size="16" icon="chevron-right" />
@@ -101,7 +101,7 @@ const Sidebar = () => {
                   {sidebarmenu.map((e) => (
                     <NavLink
                       activeClassName="active"
-                      className="flex items-center textsidebar pbpx7 gap-9"
+                      className="flex items-center activesidebar pbpx7 gap-9"
                       to={e.route}
                     >
                       <FeatherIcon
@@ -115,7 +115,7 @@ const Sidebar = () => {
                 </div>
               </div>
             </div>
-            <div class="tab ">
+            <div class="tab">
               <input type="checkbox" name="accordion-2" id="cb2" />
               <label
                 for="cb2"
@@ -130,7 +130,7 @@ const Sidebar = () => {
                   Management
                 </div>
                 <div className="flex items-center gap-4">
-                  <p className="fsize12 dot-dash rounded-full flex items-center justify-center textwhite bgsecondary">
+                  <p className="fsize12 dot-dash rounded-full flex items-center justify-center textwhite bgprimary">
                     {sidebarmenu2.length}
                   </p>
                   <FeatherIcon size="16" icon="chevron-right" />
@@ -141,7 +141,7 @@ const Sidebar = () => {
                   {sidebarmenu2.map((e) => (
                     <NavLink
                       activeClassName="active"
-                      className="flex items-center textsidebar pbpx7 gap-9"
+                      className="flex items-center activesidebar pbpx7 gap-9"
                       to={e.route}
                     >
                       <FeatherIcon
@@ -155,26 +155,26 @@ const Sidebar = () => {
                 </div>
               </div>
             </div>
-            <div className="grid grid-cols-1 p9 gap-12">
-              {sidebarmenu3.map((e) => (
-                <NavLink
-                  activeClassName="active"
-                  className="flex items-center textsidebar pbpx7 gap-9"
-                  to={e.route}
-                >
-                  <FeatherIcon
-                    icon={e.icon}
-                    className=" cursor-pointer"
-                    size={16}
-                  />
-                  <p className="fsize14  mtpx2 font-300">{e.name}</p>
-                </NavLink>
-              ))}
-            </div>
+          </div>
+          <div className="grid grid-cols-1 p9 gap-12">
+            {sidebarmenu3.map((e) => (
+              <NavLink
+                activeClassName="active"
+                className="flex items-center activesidebar pbpx7 gap-9"
+                to={e.route}
+              >
+                <FeatherIcon
+                  icon={e.icon}
+                  className=" cursor-pointer"
+                  size={16}
+                />
+                <p className="fsize14  mtpx2 font-300">{e.name}</p>
+              </NavLink>
+            ))}
           </div>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0">
+      <div className="absolute bottom-0 left-0 w-full">
         <div className="ptpx10 pbpx10 plpx20 prpx20 grid grid-cols-1 gap-12">
           <div className="flex items-center pbpx7 gap-9">
             <FeatherIcon

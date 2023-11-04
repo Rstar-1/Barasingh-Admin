@@ -1,18 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import FeatherIcon from "feather-icons-react";
 import Select from "react-select";
+import ElearnStatus from "./components/ElearnStatus";
 
 const Elearning = () => {
+  const [elearnsidebar, setelearnsidebar] = useState(false);
   const options = [
     { value: "chocolate", label: "Chocolate" },
     { value: "strawberry", label: "Strawberry" },
     { value: "vanilla", label: "Vanilla" },
   ];
   return (
-    <div className="bgwhite border-d mtpx12 blog-h p20">
+    <div className="bgwhite border-d mtpx9 cust-scroll p20">
+      {elearnsidebar ? (
+        <div className="bg-glass2 fixed top-0 right-0 h-100 w-full z-99">
+          <div className="bgwhite d-shadow sidebar-w h-100 absolute right-0 top-0">
+            <div className="bgprimary p5">
+              <div className="flex items-center justify-between gap-4 plpx7 prpx7">
+                <p className="fsize15 textwhite mtpx4 mbpx4 cursor-pointer font-500">
+                  Elearning Management
+                </p>
+                <FeatherIcon
+                  icon="x"
+                  className="textwhite cursor-pointer"
+                  size={17}
+                  onClick={() => setelearnsidebar(false)}
+                />
+              </div>
+            </div>
+            <div className="p10 side-scroll">
+              <ElearnStatus />
+            </div>
+          </div>
+        </div>
+      ) : null}
       <div className="">
-        <h6 className="fsize20 textforth mtpx1 mbpx1 font-600">
-          Elearning
+        <h6 className="fsize20 textprimary mtpx1 mbpx1 font-600">
+          Elearning Management
         </h6>
         <div className="mtpx18 rounded-10 border-ec p20">
           <div className="mtpx5 mbpx15 flex gap-12 items-center">
@@ -45,7 +69,7 @@ const Elearning = () => {
                 <th className="fsize13 w-10 textwhite font-300">
                   <p>Image</p>
                 </th>
-                <th className="fsize13 w-20 textwhite font-300">
+                <th className="fsize13 w-10 textwhite font-300">
                   <p>Title</p>
                 </th>
                 <th className="fsize13 w-20 textwhite font-300">
@@ -60,6 +84,9 @@ const Elearning = () => {
                 <th className="fsize13 w-10 textwhite font-300">
                   <p>Status</p>
                 </th>
+                <th className="fsize13 w-10 textwhite font-300">
+                  <p>Actions</p>
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -71,7 +98,7 @@ const Elearning = () => {
                     className="blog-img"
                   />
                 </td>
-                <td className="fsize13 w-20 textforth">
+                <td className="fsize13 w-10 textforth">
                   <p>Lorem ipsum may be used</p>
                 </td>
                 <td className="fsize12 w-20 textforth">
@@ -84,17 +111,20 @@ const Elearning = () => {
                   <p>12/12/2023</p>
                 </td>
                 <td className="w-20 textforth">
-                  <div className="grid-cols-2 gap-10 items-center">
-                    <p className="rounded-20 fsize12 textwarning ptpx3 pbpx3 plpx15 prpx15 flex justify-center bg-light-warning">
+                  <div className="flex flex-wrap gap-6 items-center">
+                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
                       Learnig
                     </p>
-                    <p className="rounded-20 fsize12 textwarning ptpx3 pbpx3 plpx15 prpx15 flex justify-center bg-light-warning">
+                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
+                      ecommerce
+                    </p>
+                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
                       eLearnig
                     </p>
-                    <p className="rounded-20 fsize12 textwarning ptpx3 pbpx3 plpx15 prpx15 flex justify-center bg-light-warning">
+                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
                       blog
                     </p>
-                    <p className="rounded-20 fsize12 textwarning ptpx3 pbpx3 plpx15 prpx15 flex justify-center bg-light-warning">
+                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
                       new
                     </p>
                   </div>
@@ -104,6 +134,14 @@ const Elearning = () => {
                     Active
                   </p>
                 </td>
+                <td className="fsize13 w-10 textforth plpx15">
+                  <FeatherIcon
+                    onClick={() => setelearnsidebar(true)}
+                    icon="edit"
+                    className="textgray cursor-pointer"
+                    size={16}
+                  />
+                </td>
               </tr>
               <tr>
                 <td className="fsize13 w-10 textforth">
@@ -113,7 +151,7 @@ const Elearning = () => {
                     className="blog-img"
                   />
                 </td>
-                <td className="fsize13 w-20 textforth">
+                <td className="fsize13 w-10 textforth">
                   <p>Lorem ipsum may be used</p>
                 </td>
                 <td className="fsize12 w-20 textforth">
@@ -126,59 +164,20 @@ const Elearning = () => {
                   <p>12/12/2023</p>
                 </td>
                 <td className="w-20 textforth">
-                  <div className="grid-cols-2 gap-10 items-center">
-                    <p className="rounded-20 fsize12 textwarning ptpx3 pbpx3 plpx15 prpx15 flex justify-center bg-light-warning">
+                  <div className="flex flex-wrap gap-6 items-center">
+                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
                       Learnig
                     </p>
-                    <p className="rounded-20 fsize12 textwarning ptpx3 pbpx3 plpx15 prpx15 flex justify-center bg-light-warning">
+                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
+                      ecommerce
+                    </p>
+                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
                       eLearnig
                     </p>
-                    <p className="rounded-20 fsize12 textwarning ptpx3 pbpx3 plpx15 prpx15 flex justify-center bg-light-warning">
+                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
                       blog
                     </p>
-                    <p className="rounded-20 fsize12 textwarning ptpx3 pbpx3 plpx15 prpx15 flex justify-center bg-light-warning">
-                      new
-                    </p>
-                  </div>
-                </td>
-                <td className="fsize13 w-10 textsuccess">
-                  <p className="rounded-20 fsize12 textdanger ptpx3 pbpx3 plpx15 prpx15 flex justify-center bg-light-danger">
-                    InActive
-                  </p>
-                </td>
-              </tr>
-              <tr>
-                <td className="fsize13 w-10 textforth">
-                  <img
-                    src="https://nexuscluster.blob.core.windows.net/server01/HOMECLIQ/multipleImage/poster-FZS682kyRPvBUM2gmdHQt-1697720366"
-                    alt="blog"
-                    className="blog-img"
-                  />
-                </td>
-                <td className="fsize13 w-20 textforth">
-                  <p>Lorem ipsum may be used</p>
-                </td>
-                <td className="fsize12 w-20 textforth">
-                  <p>
-                    In publishing and graphic design, Lorem ipsum is a
-                    placeholder text content.
-                  </p>
-                </td>
-                <td className="fsize13 w-20 textforth">
-                  <p>12/12/2023</p>
-                </td>
-                <td className="w-20 textforth">
-                  <div className="grid-cols-2 gap-10 items-center">
-                    <p className="rounded-20 fsize12 textwarning ptpx3 pbpx3 plpx15 prpx15 flex justify-center bg-light-warning">
-                      Learnig
-                    </p>
-                    <p className="rounded-20 fsize12 textwarning ptpx3 pbpx3 plpx15 prpx15 flex justify-center bg-light-warning">
-                      eLearnig
-                    </p>
-                    <p className="rounded-20 fsize12 textwarning ptpx3 pbpx3 plpx15 prpx15 flex justify-center bg-light-warning">
-                      blog
-                    </p>
-                    <p className="rounded-20 fsize12 textwarning ptpx3 pbpx3 plpx15 prpx15 flex justify-center bg-light-warning">
+                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
                       new
                     </p>
                   </div>
@@ -188,6 +187,14 @@ const Elearning = () => {
                     Active
                   </p>
                 </td>
+                <td className="fsize13 w-10 textforth plpx15">
+                  <FeatherIcon
+                    onClick={() => setelearnsidebar(true)}
+                    icon="edit"
+                    className="textgray cursor-pointer"
+                    size={16}
+                  />
+                </td>
               </tr>
               <tr>
                 <td className="fsize13 w-10 textforth">
@@ -197,7 +204,7 @@ const Elearning = () => {
                     className="blog-img"
                   />
                 </td>
-                <td className="fsize13 w-20 textforth">
+                <td className="fsize13 w-10 textforth">
                   <p>Lorem ipsum may be used</p>
                 </td>
                 <td className="fsize12 w-20 textforth">
@@ -210,25 +217,89 @@ const Elearning = () => {
                   <p>12/12/2023</p>
                 </td>
                 <td className="w-20 textforth">
-                  <div className="grid-cols-2 gap-10 items-center">
-                    <p className="rounded-20 fsize12 textwarning ptpx3 pbpx3 plpx15 prpx15 flex justify-center bg-light-warning">
+                  <div className="flex flex-wrap gap-6 items-center">
+                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
                       Learnig
                     </p>
-                    <p className="rounded-20 fsize12 textwarning ptpx3 pbpx3 plpx15 prpx15 flex justify-center bg-light-warning">
+                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
+                      ecommerce
+                    </p>
+                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
                       eLearnig
                     </p>
-                    <p className="rounded-20 fsize12 textwarning ptpx3 pbpx3 plpx15 prpx15 flex justify-center bg-light-warning">
+                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
                       blog
                     </p>
-                    <p className="rounded-20 fsize12 textwarning ptpx3 pbpx3 plpx15 prpx15 flex justify-center bg-light-warning">
+                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
                       new
                     </p>
                   </div>
                 </td>
                 <td className="fsize13 w-10 textsuccess">
-                  <p className="rounded-20 fsize12 textdanger ptpx3 pbpx3 plpx15 prpx15 flex justify-center bg-light-danger">
-                    InActive
+                  <p className="rounded-20 fsize12 textsuccess ptpx3 pbpx3 plpx15 prpx15 flex justify-center bg-light-success">
+                    Active
                   </p>
+                </td>
+                <td className="fsize13 w-10 textforth plpx15">
+                  <FeatherIcon
+                    onClick={() => setelearnsidebar(true)}
+                    icon="edit"
+                    className="textgray cursor-pointer"
+                    size={16}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td className="fsize13 w-10 textforth">
+                  <img
+                    src="https://nexuscluster.blob.core.windows.net/server01/HOMECLIQ/multipleImage/poster-FZS682kyRPvBUM2gmdHQt-1697720366"
+                    alt="blog"
+                    className="blog-img"
+                  />
+                </td>
+                <td className="fsize13 w-10 textforth">
+                  <p>Lorem ipsum may be used</p>
+                </td>
+                <td className="fsize12 w-20 textforth">
+                  <p>
+                    In publishing and graphic design, Lorem ipsum is a
+                    placeholder text content.
+                  </p>
+                </td>
+                <td className="fsize13 w-20 textforth">
+                  <p>12/12/2023</p>
+                </td>
+                <td className="w-20 textforth">
+                  <div className="flex flex-wrap gap-6 items-center">
+                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
+                      Learnig
+                    </p>
+                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
+                      ecommerce
+                    </p>
+                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
+                      eLearnig
+                    </p>
+                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
+                      blog
+                    </p>
+                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
+                      new
+                    </p>
+                  </div>
+                </td>
+                <td className="fsize13 w-10 textsuccess">
+                  <p className="rounded-20 fsize12 textsuccess ptpx3 pbpx3 plpx15 prpx15 flex justify-center bg-light-success">
+                    Active
+                  </p>
+                </td>
+                <td className="fsize13 w-10 textforth plpx15">
+                  <FeatherIcon
+                    onClick={() => setelearnsidebar(true)}
+                    icon="edit"
+                    className="textgray cursor-pointer"
+                    size={16}
+                  />
                 </td>
               </tr>
             </tbody>

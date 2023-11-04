@@ -3,9 +3,9 @@ import FeatherIcon from "feather-icons-react";
 
 const Seo = () => {
   return (
-    <div className="bgwhite border-d mtpx12 crm-h p20">
+    <div className="bgwhite border-d mtpx9 cust-scroll p20">
       <div className="">
-        <h6 className="fsize20 textorth mtpx1 mbpx1 font-600">
+        <h6 className="fsize20 textprimary mtpx1 mbpx1 font-600">
           Search Engine Optimization (SEO)
         </h6>
         <div className="mtpx18 rounded-10 border-ec p20">
