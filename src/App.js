@@ -10,6 +10,8 @@ import Ecommerce from "./pages/admin/layouts/components/ecommerce/Ecommerce";
 import Seo from "./pages/admin/layouts/components/seo/Seo";
 import CMS from "./pages/admin/layouts/components/cms/CmsPages"
 import Billing from "./pages/admin/layouts/components/billing/Billing";
+import Login from "./pages/login/Login";
+import Register from "./pages/login/Register";
 
 const  App = () => {
   return (
@@ -23,8 +25,10 @@ const  App = () => {
             <Header />
             <Routes>
               {/* ======================= Start-pages ======================= */}
-              <Route path="/" element={<Dashboard />} />
+              <Route path="/" element={<Login />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
               <Route path="/crm" element={<Crm />} />
               <Route path="/blogs" element={<Blog />} />
               <Route path="/elearning" element={<Elearning />} />
