@@ -1,8 +1,8 @@
 /* ======================= Start-Color ======================= */
 $primary: #7367f0 !important;
-$secondary: #e66465 !important;
+$secondary: #c54b8c !important;
 $tertiary: #1f1f1f !important;
-$forth: #555 !important;
+$forth: #0f172a !important;
 $success: #4bb543 !important;
 $warning: #ff5722 !important;
 $danger: red !important;
@@ -211,6 +211,14 @@ p {
     height: 20px !important;
   }
 }
+.success-img {
+  width: 65px !important;
+  height: 65px !important;
+  @media (max-width: 640px) {
+    width: 20px !important;
+    height: 20px !important;
+  }
+}
 .z-999 {
   z-index: 9999 !important;
 }
@@ -382,6 +390,19 @@ tr:nth-child(even):hover {
 .side-input {
   width: 95% !important;
 }
+.border-images {
+  border: 1px dashed #3d3c3c !important;
+  height: 190px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  border-radius: 10px !important;
+}
+.img-input {
+  width: 93.5% !important;
+  height: 190px !important;
+  opacity: 0 !important;
+}
 /* ======================= End-Table ======================= */
 
 /* ======================= Start-Button ======================= */
@@ -497,7 +518,17 @@ tr:nth-child(even):hover {
   height: 50px !important;
 }
 .hover-cms {
-  background: #e9e9f6;
+  background: #e9e9f6 !important;
+}
+.bordactive-tab{
+  border-bottom: 2px solid #7367f0 !important;
+}
+.bord-tab{
+  border-bottom: 2px solid #ececec !important;
+}
+.cms-image{
+  width: 50px!important;
+  height: 50px !important;
 }
 /* ======================= End-cms ======================= */
 

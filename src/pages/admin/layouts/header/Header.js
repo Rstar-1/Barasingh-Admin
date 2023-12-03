@@ -1,7 +1,37 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import FeatherIcon from "feather-icons-react";
 
 const Header = () => {
+    const [getdata, setData] = useState("");
+    const history = useNavigate();
+    const logoutuser = async () => {
+      let token = localStorage.getItem("usersdatatoken");
+      const res = await fetch("http://localhost:8000/api/logout", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+          Accept: "application/json",
+        },
+        credentials: "include",
+      });
+
+      const data = await res.json();
+      console.log(data);
+
+      if (data.status === 201) {
+        localStorage.removeItem("usersdatatoken");
+        history("/");
+      } else {
+        console.log("error");
+      }
+    };
+    useEffect(() => {
+      let tokens = localStorage.getItem("uservalid");
+      setData(tokens);
+      console.log(getdata);
+    }, [getdata]);
   return (
     <div className="bgwhite border-h flex justify-between items-center p12">
       <div className="flex items-center gap-10">
@@ -23,9 +53,31 @@ const Header = () => {
           className="textgray cursor-pointer"
           size={20}
         />
-        <button className="border-0 cursor-pointer font-500 textwhite rounded-5 ptpx10 pbpx10 plpx25 prpx25 fsize14 bgprimary">
-          Logout
-        </button>
+        {localStorage.getItem("usersdatatoken") ? (
+          <>
+            <NavLink
+              exact
+              onClick={
+                logoutuser
+              }
+            >
+              <button className="border-0 cursor-pointer font-500 textwhite rounded-5 ptpx10 pbpx10 plpx25 prpx25 fsize14 bgprimary">
+                Logout
+              </button>
+            </NavLink>
+            <div className=" ">
+              <p className="w-8 h-8 bg-danger text-white rounded-full  flex justify-center items-center uppercase fsize14 sm-fsize13">
+                {getdata[0]}
+              </p>
+            </div>
+          </>
+        ) : (
+          <>
+            <button className="border-0 cursor-pointer font-500 textwhite rounded-5 ptpx10 pbpx10 plpx25 prpx25 fsize14 bgprimary">
+              Login / Register
+            </button>
+          </>
+        )}
       </div>
     </div>
   );

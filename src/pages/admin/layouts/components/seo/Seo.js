@@ -1,9 +1,61 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import FeatherIcon from "feather-icons-react";
+import AddSeo from "./components/AddSeo";
+import axios from "axios";
+import { NavLink } from "react-router-dom";
 
 const Seo = () => {
+  const [seosidebar, setseosidebar] = useState(false);
+  const [getuserdata, setUserdata] = useState([]);
+  const [deltedata, setdeltedata] = useState("");
+  console.log(deltedata);
+
+  const getdata = async () => {
+    const response = await axios({
+      method: "get",
+      url: "http://localhost:8000/api/getseodata",
+    });
+    setUserdata(response.data);
+  };
+  const deleteuser = async (id) => {
+    const deleteres = await axios({
+      method: "delete",
+      url: `http://localhost:8000/api/deleteseodata/${id}`,
+    });
+    setdeltedata(deleteres);
+    if (deleteres.status === 201) {
+      window.location.reload(true);
+    } else {
+      alert("Category Not Submitted");
+    }
+  };
+  useEffect(() => {
+    getdata();
+  }, []);
   return (
     <div className="bgwhite border-d mtpx9 cust-scroll p20">
+      {seosidebar ? (
+        <div className="bg-glass2 fixed top-0 right-0 h-100 w-full z-99">
+          <div className="bgwhite d-shadow sidebar-w h-100 absolute right-0 top-0">
+            <div className="bgprimary p5">
+              <div className="flex items-center justify-between gap-4 plpx7 prpx7">
+                <p className="fsize15 textwhite mtpx4 mbpx4 cursor-pointer font-500">
+                  Add SEO
+                </p>
+                <FeatherIcon
+                  icon="x"
+                  className="textwhite cursor-pointer"
+                  size={17}
+                  onClick={() => setseosidebar(false)}
+                />
+              </div>
+            </div>
+            <div className="p10 side-scroll">
+              <AddSeo />
+            </div>
+          </div>
+        </div>
+      ) : null}
       <div className="">
         <h6 className="fsize20 textprimary mtpx1 mbpx1 font-600">
           Search Engine Optimization (SEO)
@@ -25,196 +77,74 @@ const Seo = () => {
                 </div>
               </div>
             </div>
+            <div className="w-40 flex justify-end">
+              <button
+                className="border-0 cursor-pointer font-500 textwhite rounded-5 ptpx10 pbpx10 plpx25 prpx25 fsize14 bgprimary"
+                onClick={() => setseosidebar(true)}
+              >
+                Add SEO
+              </button>
+            </div>
           </div>
           <table>
             <thead>
               <tr>
-                <th className="fsize13 textwhite font-300">
+                <th className="fsize13 textwhite w-10 font-300">
+                  <p>Id</p>
+                </th>
+                <th className="fsize13 textwhite w-10 font-300">
                   <p>Meta Title</p>
                 </th>
-                <th className="fsize13 textwhite font-300">
+                <th className="fsize13 textwhite w-10 font-300">
+                  <p>Meta Author</p>
+                </th>
+                <th className="fsize13 textwhite w-20 font-300">
                   <p>Meta Keyword</p>
                 </th>
-                <th className="fsize13 textwhite font-300">
+                <th className="fsize13 textwhite w-30 font-300">
                   <p>Meta Description</p>
                 </th>
-                <th className="fsize13 textwhite font-300">
-                  <p>Canonicals Tags</p>
-                </th>
-                <th className="fsize13 textwhite font-300">
+                <th className="fsize13 textwhite w-10 font-300">
                   <p>Actions</p>
                 </th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td className="fsize13 textforth">
-                  <p>Raj</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <p>Shetye</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <p>abcd@gmail.com</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <p>Admin</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <FeatherIcon
-                    icon="edit"
-                    className="textgray cursor-pointer"
-                    size={15}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td className="fsize13 textforth">
-                  <p>Aman</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <p>Shukla</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <p>abcd@gmail.com</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <p>Member</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <FeatherIcon
-                    icon="edit"
-                    className="textgray cursor-pointer"
-                    size={15}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td className="fsize13 textforth">
-                  <p>Aman</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <p>Shukla</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <p>abcd@gmail.com</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <p>Member</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <FeatherIcon
-                    icon="edit"
-                    className="textgray cursor-pointer"
-                    size={15}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td className="fsize13 textforth">
-                  <p>Aman</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <p>Shukla</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <p>abcd@gmail.com</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <p>Member</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <FeatherIcon
-                    icon="edit"
-                    className="textgray cursor-pointer"
-                    size={15}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td className="fsize13 textforth">
-                  <p>Aman</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <p>Shukla</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <p>abcd@gmail.com</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <p>Member</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <FeatherIcon
-                    icon="edit"
-                    className="textgray cursor-pointer"
-                    size={15}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td className="fsize13 textforth">
-                  <p>Aman</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <p>Shukla</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <p>abcd@gmail.com</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <p>Member</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <FeatherIcon
-                    icon="edit"
-                    className="textgray cursor-pointer"
-                    size={15}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td className="fsize13 textforth">
-                  <p>Aman</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <p>Shukla</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <p>abcd@gmail.com</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <p>Member</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <FeatherIcon
-                    icon="edit"
-                    className="textgray cursor-pointer"
-                    size={15}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td className="fsize13 textforth">
-                  <p>Aman</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <p>Shukla</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <p>abcd@gmail.com</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <p>Member</p>
-                </td>
-                <td className="fsize13 textforth">
-                  <FeatherIcon
-                    icon="edit"
-                    className="textgray cursor-pointer"
-                    size={15}
-                  />
-                </td>
-              </tr>
+              {getuserdata.map((e, id) => (
+                <tr>
+                  <td className="fsize13 textforth w-10 font-300">
+                    <p>{id + 1}</p>
+                  </td>
+                  <td className="fsize13 textforth w-10 font-300">
+                    <p>{e.metatitle}</p>
+                  </td>
+                  <td className="fsize13 textforth w-10 font-300">
+                    <p>{e.metaauthor}</p>
+                  </td>
+                  <td className="fsize13 textforth w-20 font-300">
+                    <p>{e.metakeyword}</p>
+                  </td>
+                  <td className="fsize13 textforth w-30 font-300">
+                    <p>{e.metadescription}</p>
+                  </td>
+                  <td className="fsize13 textforth">
+                    <NavLink to={`/editseo/${e._id}`}>
+                      <FeatherIcon
+                        icon="edit"
+                        className="textgray cursor-pointer"
+                        size={15}
+                      />
+                    </NavLink>
+
+                    <FeatherIcon
+                      icon="trash"
+                      className="textgray mlpx3 cursor-pointer"
+                      size={15}
+                      onClick={() => deleteuser(e._id)}
+                    />
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

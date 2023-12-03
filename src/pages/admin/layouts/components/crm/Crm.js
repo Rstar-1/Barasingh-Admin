@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import FeatherIcon from "feather-icons-react";
 import Select from "react-select";
 import EditCrm from "./components/EditCrm";
@@ -10,6 +10,29 @@ const Crm = () => {
     { value: "strawberry", label: "Strawberry" },
     { value: "vanilla", label: "Vanilla" },
   ];
+  const [getuserdata, setUserdata] = useState([]);
+  console.log(getuserdata);
+  const getdata = async () => {
+    const res = await fetch("http://localhost:8000/api/getloginuser", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await res.json();
+    console.log(data);
+
+    if (res.status === 422 || !data) {
+      console.log("error ");
+    } else {
+      setUserdata(data);
+      console.log("get data");
+    }
+  };
+  useEffect(() => {
+    getdata();
+  }, []);
   return (
     <div className="bgwhite border-d mtpx9 cust-scroll p20">
       {editcrm ? (

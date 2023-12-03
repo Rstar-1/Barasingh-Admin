@@ -12,6 +12,14 @@ import CMS from "./pages/admin/layouts/components/cms/CmsPages"
 import Billing from "./pages/admin/layouts/components/billing/Billing";
 import Login from "./pages/login/Login";
 import Register from "./pages/login/Register";
+import Subscription from "./pages/admin/layouts/components/subscription/Subscription";
+import PlanEdit from "./pages/admin/layouts/components/subscription/components/basic/components/PlanEdit";
+import PlanEdit2 from "./pages/admin/layouts/components/subscription/components/premium/components/PlanEdit";
+import PlanEdit3 from "./pages/admin/layouts/components/subscription/components/superpremium/components/PlanEdit";
+import EditSeo from "./pages/admin/layouts/components/seo/components/EditSeo";
+import Project from "./pages/admin/layouts/components/project/Project";
+import EditText from "./pages/admin/layouts/components/cms/components/textcms/components/EditText";
+import EditImage from "./pages/admin/layouts/components/cms/components/imagecms/components/EditImage";
 
 const  App = () => {
   return (
@@ -35,9 +43,16 @@ const  App = () => {
               <Route path="/ecommerce" element={<Ecommerce />} />
               <Route path="/elearning" element={<Elearning />} />
               <Route path="/cms" element={<CMS />} />
+              <Route path="/edittext/:id" element={<EditText />} />
+              <Route path="/editimage/:id" element={<EditImage />} />
               <Route path="/seo" element={<Seo />} />
-              <Route path="/cms" element={<CMS />} />
+              <Route path="/editseo/:id" element={<EditSeo />} />
+              <Route path="/project" element={<Project />} />
               <Route path="/billing" element={<Billing />} />
+              <Route path="/subscription" element={<Subscription />} />
+              <Route path="/editplan/:id" element={<PlanEdit />} />
+              <Route path="/editplan2/:id" element={<PlanEdit2 />} />
+              <Route path="/PlanEdit3/:id" element={<PlanEdit3 />} />
               {/* ======================= End-pages ======================= */}
 
               {/* ======================= Start-Error ======================= */}

@@ -53,7 +53,7 @@ const Dashboard = () => {
                 <tbody>
                   <tr>
                     <td className="fsize13 w-30 textforth">
-                      <p>Raj</p>
+                      <p>User Stories</p>
                     </td>
                     <td className="fsize13 w-70 textforth">
                       <p>Shetye</p>
@@ -61,7 +61,7 @@ const Dashboard = () => {
                   </tr>
                   <tr>
                     <td className="fsize13 w-30 textforth">
-                      <p>Raj</p>
+                      <p>API Documents</p>
                     </td>
                     <td className="fsize13 w-70 textforth">
                       <p>Shetye</p>
@@ -69,7 +69,7 @@ const Dashboard = () => {
                   </tr>
                   <tr>
                     <td className="fsize13 w-30 textforth">
-                      <p>Raj</p>
+                      <p>UAT Link</p>
                     </td>
                     <td className="fsize13 w-70 textforth">
                       <p>Shetye</p>
@@ -77,7 +77,7 @@ const Dashboard = () => {
                   </tr>
                   <tr>
                     <td className="fsize13 w-30 textforth">
-                      <p>Raj</p>
+                      <p>Plan</p>
                     </td>
                     <td className="fsize13 w-70 textforth">
                       <p>Shetye</p>
@@ -232,13 +232,46 @@ const Dashboard = () => {
               <thead>
                 <tr>
                   <th className="fsize13 textwhite font-300">
-                    <p>First Name</p>
+                    <p>Primary Color</p>
                   </th>
                   <th className="fsize13 textwhite font-300">
-                    <p>Last Name</p>
+                    <p>Secondary Color</p>
                   </th>
                   <th className="fsize13 textwhite font-300">
-                    <p>Email</p>
+                    <p>Tertiary Color</p>
+                  </th>
+                  <th className="fsize13 textwhite font-300">
+                    <p>Forth Color</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="fsize13">
+                    <p className="textprimary">#7367f0</p>
+                  </td>
+                  <td className="fsize13">
+                    <p className="textsecondary">#c54b8c</p>
+                  </td>
+                  <td className="fsize13">
+                    <p className="texttertiary">#1f1f1f</p>
+                  </td>
+                  <td className="fsize13">
+                    <p className="textforth">#0f172a</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="p20 rounded-5 bgwhite d-shadow mtpx10">
+            <table>
+              <thead>
+                <tr>
+                  <th className="fsize13 textwhite font-300">
+                    <p>Start Date</p>
+                  </th>
+                  <th className="fsize13 textwhite font-300">
+                    <p>End Date</p>
                   </th>
                 </tr>
               </thead>
@@ -249,42 +282,6 @@ const Dashboard = () => {
                   </td>
                   <td className="fsize13 textforth">
                     <p>Shetye</p>
-                  </td>
-                  <td className="fsize13 textforth">
-                    <p>abcd@gmail.com</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="fsize13 textforth">
-                    <p>Aman</p>
-                  </td>
-                  <td className="fsize13 textforth">
-                    <p>Shukla</p>
-                  </td>
-                  <td className="fsize13 textforth">
-                    <p>abcd@gmail.com</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="fsize13 textforth">
-                    <p>Aman</p>
-                  </td>
-                  <td className="fsize13 textforth">
-                    <p>Shukla</p>
-                  </td>
-                  <td className="fsize13 textforth">
-                    <p>abcd@gmail.com</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="fsize13 textforth">
-                    <p>Aman</p>
-                  </td>
-                  <td className="fsize13 textforth">
-                    <p>Shukla</p>
-                  </td>
-                  <td className="fsize13 textforth">
-                    <p>abcd@gmail.com</p>
                   </td>
                 </tr>
               </tbody>

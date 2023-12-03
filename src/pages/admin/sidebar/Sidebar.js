@@ -10,34 +10,48 @@ const Sidebar = () => {
       icon: "grid",
       route: "dashboard",
     },
-    {
-      id: 2,
-      name: "CRM",
-      icon: "user",
-      route: "crm",
-    },
   ];
   const sidebarmenu2 = [
     {
       id: 1,
+      name: "Subscription",
+      icon: "file",
+      route: "subscription",
+    },
+    {
+      id: 2,
+      name: "Projects",
+      icon: "search",
+      route: "project",
+    },
+  ];
+  const sidebarmenu3 = [
+    {
+      id: 1,
+      name: "CRM",
+      icon: "user",
+      route: "crm",
+    },
+    {
+      id: 2,
       name: "Blog",
       icon: "folder",
       route: "blogs",
     },
     {
-      id: 2,
+      id: 3,
       name: "Elearning",
       icon: "video",
       route: "elearning",
     },
     {
-      id: 3,
+      id: 4,
       name: "Ecommerce",
       icon: "shopping-cart",
       route: "ecommerce",
     },
   ];
-  const sidebarmenu3 = [
+  const sidebarmenu4 = [
     {
       id: 1,
       name: "Cms",
@@ -64,16 +78,15 @@ const Sidebar = () => {
     },
   ];
   return (
-    <div className="bgwhite h-100 relative">
+    <div className="bgwhite h-100 overflow-auto relative">
       <div className="">
-        <div className="flex justify-center w-full ptpx20 pbpx20">
-          <img
-            src="https://nexuscluster.blob.core.windows.net/server01/HOMECLIQ/multipleImage/poster-FZS682kyRPvBUM2gmdHQt-1697720366"
-            alt="logo"
-            className="sidebar-logo"
-          />
+        <div className=" w-full p20">
+          <h2 className="fsize25 mtpx1 mbpx1 font-900 textprimary">
+            RS<span className="textsecondary mlpx2">Deve</span>
+          </h2>
+          <p className="textforth fsize13">Logo in mde</p>
         </div>
-        <div className="ptpx10 pbpx10 plpx10 prpx10">
+        <div className="pbpx10 plpx10 prpx10">
           <div class="accordion">
             <div class="tab">
               <input type="checkbox" name="accordion-1" id="cb1" />
@@ -123,11 +136,11 @@ const Sidebar = () => {
               >
                 <div className="flex items-center gap-4">
                   <FeatherIcon
-                    icon="briefcase"
+                    icon="file"
                     className="textgray cursor-pointer"
                     size={16}
                   />
-                  Management
+                  Website
                 </div>
                 <div className="flex items-center gap-4">
                   <p className="fsize12 dot-dash rounded-full flex items-center justify-center textwhite bgprimary">
@@ -155,9 +168,49 @@ const Sidebar = () => {
                 </div>
               </div>
             </div>
+            <div class="tab">
+              <input type="checkbox" name="accordion-3" id="cb3" />
+              <label
+                for="cb3"
+                className="p10 hover-col cursor-pointer flex justify-between items-center fsize15 textforth mtpx2 font-300"
+              >
+                <div className="flex items-center gap-4">
+                  <FeatherIcon
+                    icon="briefcase"
+                    className="textgray cursor-pointer"
+                    size={16}
+                  />
+                  Management
+                </div>
+                <div className="flex items-center gap-4">
+                  <p className="fsize12 dot-dash rounded-full flex items-center justify-center textwhite bgprimary">
+                    {sidebarmenu3.length}
+                  </p>
+                  <FeatherIcon size="16" icon="chevron-right" />
+                </div>
+              </label>
+              <div class="tab__content">
+                <div className="grid grid-cols-1 p9 gap-12">
+                  {sidebarmenu3.map((e) => (
+                    <NavLink
+                      activeClassName="active"
+                      className="flex items-center activesidebar pbpx7 gap-9"
+                      to={e.route}
+                    >
+                      <FeatherIcon
+                        icon={e.icon}
+                        className=" cursor-pointer"
+                        size={16}
+                      />
+                      <p className="fsize14  mtpx2 font-300">{e.name}</p>
+                    </NavLink>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
           <div className="grid grid-cols-1 p9 gap-12">
-            {sidebarmenu3.map((e) => (
+            {sidebarmenu4.map((e) => (
               <NavLink
                 activeClassName="active"
                 className="flex items-center activesidebar pbpx7 gap-9"
@@ -171,18 +224,6 @@ const Sidebar = () => {
                 <p className="fsize14  mtpx2 font-300">{e.name}</p>
               </NavLink>
             ))}
-          </div>
-        </div>
-      </div>
-      <div className="absolute bottom-0 left-0 w-full">
-        <div className="ptpx10 pbpx10 plpx20 prpx20 grid grid-cols-1 gap-12">
-          <div className="flex items-center pbpx7 gap-9">
-            <FeatherIcon
-              icon="log-out"
-              className="textgray cursor-pointer"
-              size={16}
-            />
-            <p className="fsize14 textgray mtpx2 font-300">Logout</p>
           </div>
         </div>
       </div>
