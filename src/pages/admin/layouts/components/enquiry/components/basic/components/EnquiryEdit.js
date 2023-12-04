@@ -35,10 +35,9 @@ const EnquiryEdit = () => {
       data: payload,
     });
     setupdate(editresponse);
-    if (editresponse.status === 201) {
-        alert('edit')
-    //   history("/enquiry");
-    //   window.location.reload(true);
+    if (editresponse.status === 201) {    
+      history("/enquiry");
+      window.location.reload(true);
     } else {
       alert("Category Not Submitted");
     }
