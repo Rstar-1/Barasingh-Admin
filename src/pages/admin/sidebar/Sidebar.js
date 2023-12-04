@@ -22,7 +22,7 @@ const Sidebar = () => {
       id: 2,
       name: "Plan Users",
       icon: "pocket",
-      route: "project",
+      route: "enquiry",
     },
   ];
   const sidebarmenu3 = [
@@ -162,7 +162,7 @@ const Sidebar = () => {
               >
                 <div className="flex items-center gap-4">
                   <FeatherIcon
-                    icon="file"
+                    icon="dollar-sign"
                     className="textgray cursor-pointer"
                     size={16}
                   />

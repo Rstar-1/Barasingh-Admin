@@ -20,6 +20,8 @@ import EditSeo from "./pages/admin/layouts/components/seo/components/EditSeo";
 import Project from "./pages/admin/layouts/components/project/Project";
 import EditText from "./pages/admin/layouts/components/cms/components/textcms/components/EditText";
 import EditImage from "./pages/admin/layouts/components/cms/components/imagecms/components/EditImage";
+import Enquiry from "./pages/admin/layouts/components/enquiry/Enquiry";
+import EnquiryEdit from "./pages/admin/layouts/components/enquiry/components/basic/components/EnquiryEdit";
 
 const  App = () => {
   return (
@@ -50,6 +52,8 @@ const  App = () => {
               <Route path="/project" element={<Project />} />
               <Route path="/billing" element={<Billing />} />
               <Route path="/subscription" element={<Subscription />} />
+              <Route path="/enquiry" element={<Enquiry />} />
+              <Route path="/editenquiry/:id" element={<EnquiryEdit />} />
               <Route path="/editplan/:id" element={<PlanEdit />} />
               <Route path="/editplan2/:id" element={<PlanEdit2 />} />
               <Route path="/PlanEdit3/:id" element={<PlanEdit3 />} />
