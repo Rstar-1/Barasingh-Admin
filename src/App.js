@@ -22,6 +22,7 @@ import EditText from "./pages/admin/layouts/components/cms/components/textcms/co
 import EditImage from "./pages/admin/layouts/components/cms/components/imagecms/components/EditImage";
 import Enquiry from "./pages/admin/layouts/components/enquiry/Enquiry";
 import EnquiryEdit from "./pages/admin/layouts/components/enquiry/components/basic/components/EnquiryEdit";
+import EnquiryEdit2 from "./pages/admin/layouts/components/enquiry/components/premium/components/EnquiryEdit";
 
 const  App = () => {
   return (
@@ -54,9 +55,10 @@ const  App = () => {
               <Route path="/subscription" element={<Subscription />} />
               <Route path="/enquiry" element={<Enquiry />} />
               <Route path="/editenquiry/:id" element={<EnquiryEdit />} />
+              <Route path="/editenquiry2/:id" element={<EnquiryEdit2 />} />
               <Route path="/editplan/:id" element={<PlanEdit />} />
               <Route path="/editplan2/:id" element={<PlanEdit2 />} />
-              <Route path="/PlanEdit3/:id" element={<PlanEdit3 />} />
+              <Route path="/editplan3/:id" element={<PlanEdit3 />} />
               {/* ======================= End-pages ======================= */}
 
               {/* ======================= Start-Error ======================= */}

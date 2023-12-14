@@ -106,7 +106,7 @@ const Premium = () => {
                   <p>{new Date(e.updatedAt).toDateString()}</p>
                 </td>
                 <td className="fsize13 w-10 textforth plpx15">
-                  <NavLink to={`/editplan/${e._id}`}>
+                  <NavLink to={`/editenquiry2/${e._id}`}>
                     {" "}
                     <FeatherIcon
                       icon="edit"

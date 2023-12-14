@@ -8,6 +8,7 @@ const PremiumPlans = () => {
   const [plansidebar, setplansidebar] = useState(false);
   const [getuserdata, setUserdata] = useState([]);
   const [deltedata, setdeltedata] = useState("");
+   const [search, setsearch] = useState("");
   console.log(deltedata);
 
   const getdata = async () => {
@@ -84,6 +85,7 @@ const PremiumPlans = () => {
             <div className="relative">
               <input
                 className="w-full h-input fsize14 rounded-5 plpx10 border-ec"
+                onChange={(e) => setsearch(e.target.value)}
                 placeholder="Search"
               />
               <div className="absolute top-0 right-0 mtpx9 mrpx2">
@@ -117,39 +119,45 @@ const PremiumPlans = () => {
             </tr>
           </thead>
           <tbody>
-            {getuserdata.map((e, id) => (
-              <tr>
-                <td className="fsize13 w-10 textforth">
-                  <p>{id + 1}</p>
-                </td>
-                <td className="fsize13 w-40 textforth">
-                  <p>{e.plan}</p>
-                </td>
-                <td className="fsize13 w-20 textforth">
-                  <p>{new Date(e.createdAt).toDateString()}</p>
-                </td>
-                <td className="fsize13 w-20 textforth">
-                  <p>{new Date(e.updatedAt).toDateString()}</p>
-                </td>
-                <td className="fsize13 w-10 textforth plpx15">
-                  <NavLink to={`/editplan2/${e._id}`}>
-                    {" "}
+            {getuserdata
+              .filter((e) => {
+                return search.toLowerCase() === ""
+                  ? e
+                  : e.plan.toLowerCase().includes(search);
+              })
+              .map((e, id) => (
+                <tr key={e.id}>
+                  <td className="fsize13 w-10 textforth">
+                    <p>{id + 1}</p>
+                  </td>
+                  <td className="fsize13 w-40 textforth">
+                    <p>{e.plan}</p>
+                  </td>
+                  <td className="fsize13 w-20 textforth">
+                    <p>{new Date(e.createdAt).toDateString()}</p>
+                  </td>
+                  <td className="fsize13 w-20 textforth">
+                    <p>{new Date(e.updatedAt).toDateString()}</p>
+                  </td>
+                  <td className="fsize13 w-10 textforth plpx15">
+                    <NavLink to={`/editplan2/${e._id}`}>
+                      {" "}
+                      <FeatherIcon
+                        icon="edit"
+                        className="textgray cursor-pointer"
+                        size={16}
+                      />
+                    </NavLink>
+
                     <FeatherIcon
-                      icon="edit"
-                      className="textgray cursor-pointer"
+                      onClick={() => deleteuser(e._id)}
+                      icon="trash"
+                      className="textgray mlpx4 cursor-pointer"
                       size={16}
                     />
-                  </NavLink>
-
-                  <FeatherIcon
-                    onClick={() => deleteuser(e._id)}
-                    icon="trash"
-                    className="textgray mlpx4 cursor-pointer"
-                    size={16}
-                  />
-                </td>
-              </tr>
-            ))}
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

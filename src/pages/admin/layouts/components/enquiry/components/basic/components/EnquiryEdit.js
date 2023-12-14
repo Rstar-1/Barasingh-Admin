@@ -36,8 +36,8 @@ const EnquiryEdit = () => {
     });
     setupdate(editresponse);
     if (editresponse.status === 201) {    
-      history("/enquiry");
-      window.location.reload(true);
+      // history("/enquiry");
+      // window.location.reload(true);
     } else {
       alert("Category Not Submitted");
     }
