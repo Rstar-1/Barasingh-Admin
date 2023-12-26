@@ -1,6 +1,6 @@
 import React from "react";
-import FeatherIcon from "feather-icons-react";
 import { NavLink } from "react-router-dom";
+import FeatherIcon from "feather-icons-react";
 
 const Sidebar = () => {
   const sidebarmenu = [
@@ -86,23 +86,18 @@ const Sidebar = () => {
     },
     {
       id: 3,
-      name: "Addons",
-      icon: "shopping-bag",
-      route: "addons",
-    },
-    {
-      id: 4,
       name: "Billing",
       icon: "book",
       route: "billing",
     },
     {
-      id: 5,
+      id: 4,
       name: "Get the App",
       icon: "tablet",
       route: "getapp",
     },
   ];
+  
   return (
     <div className="bgwhite h-100 overflow-auto relative">
       <div className="">

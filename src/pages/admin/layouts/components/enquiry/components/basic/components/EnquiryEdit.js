@@ -23,11 +23,12 @@ const EnquiryEdit = () => {
     setEnquiryName(editresponse.data.name);
     setMessage(editresponse.data.message);
   };
+
   const editUserdata = async (e) => {
     e.preventDefault();
     const payload = {
-      setEnquiryName: EnquiryName,
-      setMessage: Message,
+      name: EnquiryName,
+      message: Message,
     };
     const editresponse = await axios({
       method: "patch",
@@ -36,15 +37,17 @@ const EnquiryEdit = () => {
     });
     setupdate(editresponse);
     if (editresponse.status === 201) {    
-      // history("/enquiry");
-      // window.location.reload(true);
+      history("/enquiry");
+      window.location.reload(true);
     } else {
       alert("Category Not Submitted");
     }
   };
+  
   useEffect(() => {
     getsingledata();
   }, []);
+
   return (
     <div>
       <div className="mtpx6 grid-cols-1 gap-12">

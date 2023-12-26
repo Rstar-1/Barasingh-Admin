@@ -260,6 +260,31 @@ p {
 }
 /* ======================= End-Maincss ======================= */
 
+/* ======================= Start-Pagination ======================= */
+.pagination {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+.pagination li {
+  background: #ececec;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  color: #111;
+  cursor: pointer;
+}
+.pagination .selected {
+  background: $primary;
+  color: $white;
+}
+/* ======================= End-Pagination ======================= */
+
 /* ======================= Start-loader ======================= */
 .loader {
   border: 2px solid transparent;
@@ -403,6 +428,10 @@ tr:nth-child(even):hover {
   height: 190px !important;
   opacity: 0 !important;
 }
+.side-img {
+  width: 350px !important;
+  height: 350px !important;
+}
 /* ======================= End-Table ======================= */
 
 /* ======================= Start-Button ======================= */
@@ -454,7 +483,7 @@ tr:nth-child(even):hover {
   width: 20px !important;
   height: 20px !important;
 }
-.sidebar-img{
+.sidebar-img {
   width: 120px !important;
   height: 120px !important;
 }
@@ -472,7 +501,7 @@ tr:nth-child(even):hover {
 
 /* ======================= Start-Login ======================= */
 .w-login {
-  width:97% !important;
+  width: 97% !important;
 }
 /* ======================= End-Login ======================= */
 
@@ -499,7 +528,7 @@ tr:nth-child(even):hover {
   height: 30px !important;
   border-radius: 50% !important;
 }
-.dash-scroll{
+.dash-scroll {
   overflow-y: auto !important;
   height: 86vh !important;
 }
@@ -524,14 +553,17 @@ tr:nth-child(even):hover {
 .hover-cms {
   background: #e9e9f6 !important;
 }
-.bordactive-tab{
+.bordactive-tab {
   border-bottom: 2px solid #7367f0 !important;
 }
-.bord-tab{
+.bord-tab {
   border-bottom: 2px solid #ececec !important;
 }
-.cms-image{
-  width: 50px!important;
+.border-side {
+  border-right: 2px solid #ececec !important;
+}
+.cms-image {
+  width: 50px !important;
   height: 50px !important;
 }
 /* ======================= End-cms ======================= */
@@ -542,3 +574,4 @@ tr:nth-child(even):hover {
   height: 50px !important;
 }
 /* ======================= End-bill ======================= */
+

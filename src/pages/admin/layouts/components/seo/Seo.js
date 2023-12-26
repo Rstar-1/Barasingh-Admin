@@ -1,23 +1,29 @@
 import React, { useState, useEffect } from "react";
-import FeatherIcon from "feather-icons-react";
-import AddSeo from "./components/AddSeo";
-import axios from "axios";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
+import FeatherIcon from "feather-icons-react";
+// Pages
+import AddSeo from "./components/AddSeo";
 
 const Seo = () => {
-  const [seosidebar, setseosidebar] = useState(false);
-  const [getuserdata, setUserdata] = useState([]);
+  // Seo useState Call
+  const [seodata, setseodata] = useState([]);
   const [deltedata, setdeltedata] = useState("");
+  // Add Sidebar
+  const [seosidebar, setseosidebar] = useState(false);
   console.log(deltedata);
+  // Search
+  const[search, setsearch] = useState("");
 
-  const getdata = async () => {
+  // API Call
+  const getseodata = async () => {
     const response = await axios({
       method: "get",
       url: "http://localhost:8000/api/getseodata",
     });
-    setUserdata(response.data);
+    setseodata(response.data);
   };
-  const deleteuser = async (id) => {
+  const deleteseo = async (id) => {
     const deleteres = await axios({
       method: "delete",
       url: `http://localhost:8000/api/deleteseodata/${id}`,
@@ -29,11 +35,15 @@ const Seo = () => {
       alert("Category Not Submitted");
     }
   };
+
+  // Render API
   useEffect(() => {
-    getdata();
+    getseodata();
   }, []);
+
   return (
     <div className="bgwhite border-d mtpx9 cust-scroll p20">
+      {/* ========= Add Seo ========= */}
       {seosidebar ? (
         <div className="bg-glass2 fixed top-0 right-0 h-100 w-full z-99">
           <div className="bgwhite d-shadow sidebar-w h-100 absolute right-0 top-0">
@@ -56,6 +66,7 @@ const Seo = () => {
           </div>
         </div>
       ) : null}
+      {/* ========= Add Seo ========= */}
       <div className="">
         <h6 className="fsize20 textprimary mtpx1 mbpx1 font-600">
           Search Engine Optimization (SEO)
@@ -67,6 +78,7 @@ const Seo = () => {
                 <input
                   className="w-full h-input fsize14 rounded-5 plpx10 border-ec"
                   placeholder="Search"
+                  onChange={(e) => setsearch(e.target.value)}
                 />
                 <div className="absolute top-0 right-0 mtpx9 mrpx2">
                   <FeatherIcon
@@ -110,41 +122,47 @@ const Seo = () => {
               </tr>
             </thead>
             <tbody>
-              {getuserdata.map((e, id) => (
-                <tr>
-                  <td className="fsize13 textforth w-10 font-300">
-                    <p>{id + 1}</p>
-                  </td>
-                  <td className="fsize13 textforth w-10 font-300">
-                    <p>{e.metatitle}</p>
-                  </td>
-                  <td className="fsize13 textforth w-10 font-300">
-                    <p>{e.metaauthor}</p>
-                  </td>
-                  <td className="fsize13 textforth w-20 font-300">
-                    <p>{e.metakeyword}</p>
-                  </td>
-                  <td className="fsize13 textforth w-30 font-300">
-                    <p>{e.metadescription}</p>
-                  </td>
-                  <td className="fsize13 textforth">
-                    <NavLink to={`/editseo/${e._id}`}>
-                      <FeatherIcon
-                        icon="edit"
-                        className="textgray cursor-pointer"
-                        size={15}
-                      />
-                    </NavLink>
+              {seodata
+                .filter((e) => {
+                  return search.toLowerCase() === ""
+                    ? e
+                    : e.metatitle.toLowerCase().includes(search);
+                })
+                .map((e, id) => (
+                  <tr>
+                    <td className="fsize13 textforth w-10 font-300">
+                      <p>{id + 1}</p>
+                    </td>
+                    <td className="fsize13 textforth w-10 font-300">
+                      <p>{e.metatitle}</p>
+                    </td>
+                    <td className="fsize13 textforth w-10 font-300">
+                      <p>{e.metaauthor}</p>
+                    </td>
+                    <td className="fsize13 textforth w-20 font-300">
+                      <p>{e.metakeyword}</p>
+                    </td>
+                    <td className="fsize13 textforth w-30 font-300">
+                      <p>{e.metadescription}</p>
+                    </td>
+                    <td className="fsize13 textforth">
+                      <NavLink to={`/editseo/${e._id}`}>
+                        <FeatherIcon
+                          icon="edit"
+                          className="textgray cursor-pointer"
+                          size={15}
+                        />
+                      </NavLink>
 
-                    <FeatherIcon
-                      icon="trash"
-                      className="textgray mlpx3 cursor-pointer"
-                      size={15}
-                      onClick={() => deleteuser(e._id)}
-                    />
-                  </td>
-                </tr>
-              ))}
+                      <FeatherIcon
+                        icon="trash"
+                        className="textgray mlpx3 cursor-pointer"
+                        size={15}
+                        onClick={() => deleteseo(e._id)}
+                      />
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>

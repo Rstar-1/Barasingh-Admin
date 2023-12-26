@@ -26,8 +26,8 @@ const EnquiryEdit = () => {
   const editUserdata = async (e) => {
     e.preventDefault();
     const payload = {
-      setEnquiryName: EnquiryName,
-      setMessage: Message,
+      name: EnquiryName,
+      message: Message,
     };
     const editresponse = await axios({
       method: "patch",

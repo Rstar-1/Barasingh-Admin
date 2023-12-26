@@ -34,8 +34,9 @@ const TextCms = () => {
   useEffect(() => {
     getdata();
   }, []);
+
   return (
-    <div>
+    <div className='plpx8 prpx8'>
       {textsidebar ? (
         <div className="bg-glass2 fixed top-0 right-0 h-100 w-full z-99">
           <div className="bgwhite d-shadow sidebar-w h-100 absolute right-0 top-0">
@@ -58,7 +59,7 @@ const TextCms = () => {
           </div>
         </div>
       ) : null}
-      <div className="mtpx5 mbpx15 flex justify-end items-center">
+      <div className="mbpx15 flex justify-end items-center">
         {" "}
         <button
           onClick={() => settextsidebar(true)}
@@ -67,68 +68,76 @@ const TextCms = () => {
           Add Text
         </button>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th className="fsize13 w-10 textwhite font-300">
-              <p>Id</p>
-            </th>
-            <th className="fsize13 w-20 textwhite font-300">
-              <p>Position</p>
-            </th>
-            <th className="fsize13 w-20 textwhite font-300">
-              <p>Text</p>
-            </th>
-            <th className="fsize13 w-20 textwhite font-300">
-              <p>Created Date</p>
-            </th>
-            <th className="fsize13 w-20 textwhite font-300">
-              <p>Updated Date</p>
-            </th>
-            <th className="fsize13 w-10 textwhite font-300">
-              <p>Actions</p>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {getuserdata.map((e, id) => (
+      <div className="">
+        <table>
+          <thead>
             <tr>
-              <td className="fsize13 w-10 textforth font-300">
-                <p className='plpx4'>{id + 1}</p>
-              </td>
-              <td className="fsize13 w-20 textforth font-300">
-                <p>{e.position}</p>
-              </td>
-              <td className="fsize13 w-20 textforth font-300">
-                <p className='line-clamp3'>{e.title}</p>
-              </td>
-              <td className="fsize13 w-20 textforth font-300">
-                <p>{new Date(e.createdAt).toDateString()}</p>
-              </td>
-              <td className="fsize13 w-20 textforth font-300">
-                <p>{new Date(e.updatedAt).toDateString()}</p>
-              </td>
-              <td className="fsize13 w-10 textforth font-300">
-                <NavLink to={`/edittext/${e._id}`}>
-                  {" "}
-                  <FeatherIcon
-                    icon="edit"
-                    className="textgray cursor-pointer"
-                    size={16}
-                  />
-                </NavLink>
-
-                <FeatherIcon
-                  onClick={() => deleteuser(e._id)}
-                  icon="trash"
-                  className="textgray mlpx4 cursor-pointer"
-                  size={16}
-                />
-              </td>
+              <th className="fsize13 w-10 textwhite font-300">
+                <p>Id</p>
+              </th>
+              <th className="fsize13 w-20 textwhite font-300">
+                <p>Position</p>
+              </th>
+              <th className="fsize13 w-20 textwhite font-300">
+                <p>Text</p>
+              </th>
+              <th className="fsize13 w-20 textwhite font-300">
+                <p>Created Date</p>
+              </th>
+              <th className="fsize13 w-20 textwhite font-300">
+                <p>Updated Date</p>
+              </th>
+              <th className="fsize13 w-10 textwhite font-300">
+                <p>Actions</p>
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {getuserdata.map((e, id) => (
+              <>
+                {e.position === "Home" ? (
+                  <>
+                    <tr>
+                      <td className="fsize13 w-10 textforth font-300">
+                        <p className="plpx4">{id + 1}</p>
+                      </td>
+                      <td className="fsize13 w-20 textforth font-300">
+                        <p>{e.position}</p>
+                      </td>
+                      <td className="fsize13 w-20 textforth font-300">
+                        <p className="line-clamp2">{e.title}</p>
+                      </td>
+                      <td className="fsize13 w-20 textforth font-300">
+                        <p>{new Date(e.createdAt).toDateString()}</p>
+                      </td>
+                      <td className="fsize13 w-20 textforth font-300">
+                        <p>{new Date(e.updatedAt).toDateString()}</p>
+                      </td>
+                      <td className="fsize13 w-10 textforth font-300">
+                        <NavLink to={`/edittext/${e._id}`}>
+                          {" "}
+                          <FeatherIcon
+                            icon="edit"
+                            className="textgray cursor-pointer"
+                            size={16}
+                          />
+                        </NavLink>
+
+                        <FeatherIcon
+                          onClick={() => deleteuser(e._id)}
+                          icon="trash"
+                          className="textgray mlpx4 cursor-pointer"
+                          size={16}
+                        />
+                      </td>
+                    </tr>
+                  </>
+                ) : null}
+              </>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

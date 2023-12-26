@@ -1,5 +1,4 @@
 import React from "react";
-import FeatherIcon from "feather-icons-react";
 import {
   CircularProgressbarWithChildren,
   buildStyles,
@@ -20,15 +19,15 @@ const Dashboard = () => {
                 <div className="grid-cols-3 mtpx15 gap-12">
                   <div>
                     <h3 className="fsize19 mtpx1 mbpx1 textwhite">243</h3>
-                    <p className="fsize12 mtpx1 mbpx1 textwhite">Dashbaord</p>
+                    <p className="fsize12 mtpx1 mbpx1 textwhite">Projects</p>
                   </div>
                   <div>
                     <h3 className="fsize19 mtpx1 mbpx1 textwhite">103</h3>
-                    <p className="fsize12 mtpx1 mbpx1 textwhite">Dashbaord</p>
+                    <p className="fsize12 mtpx1 mbpx1 textwhite">Brands</p>
                   </div>
                   <div>
                     <h3 className="fsize19 mtpx1 mbpx1 textwhite">103</h3>
-                    <p className="fsize12 mtpx1 mbpx1 textwhite">Dashbaord</p>
+                    <p className="fsize12 mtpx1 mbpx1 textwhite">Connect Us</p>
                   </div>
                 </div>
               </div>
@@ -91,13 +90,7 @@ const Dashboard = () => {
                 <h4 className="fsize18 font-400 textprimary mtpx1 mbpx1">
                   Social Media
                 </h4>
-                <div className="next bg-light-primary flex justify-center items-center">
-                  <FeatherIcon
-                    icon="chevron-right"
-                    className="textprimary cursor-pointer"
-                    size={14}
-                  />
-                </div>
+                
               </div>
               <div className="flex justify-around mtpx20 gap-12">
                 <img

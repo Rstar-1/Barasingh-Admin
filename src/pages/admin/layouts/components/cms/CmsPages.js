@@ -1,4 +1,3 @@
-import FeatherIcon from "feather-icons-react";
 import React, { useState } from "react";
 import TextCms from "./components/textcms/TextCms"
 import ImageCms from "./components/imagecms/ImageCms"
@@ -8,11 +7,35 @@ const CmsPages = () => {
   const cmsOption = [
     {
       id:"01",
-      name:'Text',
+      name:'Home',
     },
     {
       id:"02",
-      name:'Image',
+      name:'About Us',
+    },
+    {
+      id:"03",
+      name:'Plans',
+    },
+    {
+      id:"04",
+      name:'Blogs',
+    },
+    {
+      id:"05",
+      name:'Gallery',
+    },
+    {
+      id:"06",
+      name:'Ecommerce',
+    },
+    {
+      id:"07",
+      name:'Elearning',
+    },
+    {
+      id:"08",
+      name:'Connect Us',
     },
   ]
   return (
@@ -22,22 +45,24 @@ const CmsPages = () => {
           Content management System (CMS)
         </h5>
         <div className="flex gap-12 items-start w-full mtpx30">
-          <div className="w-20 grid-cols-1 gap-10">
+          <div className="w-20 grid-cols-1 ptpx10 pbpx100 gap-12 border-side">
+            <h5 className="fsize18 textforth mtpx1 mbpx1 bordb pbpx10">
+              Pages
+            </h5>
             {cmsOption.map((e) => (
               <div
                 className={
                   check === e.id
-                    ? "bgprimary textwhite rounded-10 p16 flex cursor-pointer items-center justify-between d-shadow"
-                    : "bgwhite textforth rounded-10 p16 flex cursor-pointer items-center justify-between d-shadow"
+                    ? "textprimary cursor-pointer"
+                    : "texdark cursor-pointer"
                 }
                 onClick={() => setcheck(e.id)}
               >
-                <h3 className="fsize15 font-400 mtpx1 mbpx1">{e.name}</h3>
-                <FeatherIcon  icon="chevron-right" />
+                <h3 className="fsize14 font-400 mtpx2 mbpx2">{e.name}</h3>
               </div>
             ))}
           </div>
-          <div className="w-80 d-shadow p20 rounded-10 bg-white">
+          <div className="w-80 bg-white">
             {check === "01" ? (
               <>
                 <div>

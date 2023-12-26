@@ -1,22 +1,44 @@
 import React, { useState, useEffect } from "react";
-import FeatherIcon from "feather-icons-react";
-import axios from "axios";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
+import ReactPaginate from "react-paginate";
+import FeatherIcon from "feather-icons-react";
 import PlanAdd from "./components/PlanAdd";
 
 const PremiumPlans = () => {
+  // sidebar UseState Data
   const [plansidebar, setplansidebar] = useState(false);
+  // API UseState Data
   const [getuserdata, setUserdata] = useState([]);
   const [deltedata, setdeltedata] = useState("");
-   const [search, setsearch] = useState("");
   console.log(deltedata);
+  // Search UseState Data
+  const [search, setsearchdata] = useState("");
+  // Pagination UseState Data
+  const [pageCount, setpageCount] = useState(0);
+  const [offset, setOffset] = useState(0);
 
-  const getdata = async () => {
-    const response = await axios({
-      method: "get",
-      url: "http://localhost:8000/api/getplantwodata",
-    });
-    setUserdata(response.data);
+  // API Call
+  const getplandata = async () => {
+    const payload = {};
+    if (search) {
+      Object.assign(payload, { search: search });
+    }
+    if (offset) {
+      Object.assign(payload, { offset: offset });
+    }
+    try {
+      const response = await axios({
+        method: "post",
+        url: "http://localhost:8000/api/getplantwodata",
+        data: payload, // Pass the payload as data in the POST request
+      });
+
+      setUserdata(response.data.data);
+      setpageCount(Math.ceil(response.data.totalCount / 10));
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
   const deleteuser = async (id) => {
     const deleteres = await axios({
@@ -32,9 +54,54 @@ const PremiumPlans = () => {
       alert("Category Not Submitted");
     }
   };
+
+  // Function
+  const handlePageClick = (event) => {
+    console.log(event, "handle");
+    let page = event.selected + 1;
+    const curoffset = page > 1 ? (page - 1) * 10 : 0;
+    setOffset(curoffset);
+
+    getplandata();
+  };
+  const statustrue = async (e) => {
+    const payload = {
+      status: false,
+    };
+    const editresponse = await axios({
+      method: "patch",
+      url: `http://localhost:8000/api/updateplantwodata/${e}`,
+      data: payload,
+    });
+    //setupdate(editresponse);
+    if (editresponse.status === 201) {
+      window.location.reload(true);
+    } else {
+      alert("Category Not Submitted");
+    }
+  };
+  const statusfalse = async (e) => {
+    const payload = {
+      status: true,
+    };
+    const editresponse = await axios({
+      method: "patch",
+      url: `http://localhost:8000/api/updateplantwodata/${e}`,
+      data: payload,
+    });
+    //setupdate(editresponse);
+    if (editresponse.status === 201) {
+      window.location.reload(true);
+    } else {
+      alert("Category Not Submitted");
+    }
+  };
+
+  // Render API
   useEffect(() => {
-    getdata();
-  }, []);
+    getplandata();
+  }, [search]);
+
   return (
     <div className="mtpx9 p20">
       {plansidebar ? (
@@ -85,8 +152,8 @@ const PremiumPlans = () => {
             <div className="relative">
               <input
                 className="w-full h-input fsize14 rounded-5 plpx10 border-ec"
-                onChange={(e) => setsearch(e.target.value)}
                 placeholder="Search"
+                onChange={(e) => setsearchdata(e.target.value)}
               />
               <div className="absolute top-0 right-0 mtpx9 mrpx2">
                 <FeatherIcon
@@ -101,17 +168,14 @@ const PremiumPlans = () => {
         <table>
           <thead>
             <tr>
-              <th className="fsize13 w-10 textwhite font-300">
-                <p>ID</p>
-              </th>
               <th className="fsize13 w-40 textwhite font-300">
                 <p>Plan Name</p>
               </th>
-              <th className="fsize13 w-20 textwhite font-300">
+              <th className="fsize13 w-30 textwhite font-300">
                 <p>Created Date</p>
               </th>
               <th className="fsize13 w-20 textwhite font-300">
-                <p>Udated Date</p>
+                <p>Status</p>
               </th>
               <th className="fsize13 w-10 textwhite font-300">
                 <p>Actions</p>
@@ -119,47 +183,69 @@ const PremiumPlans = () => {
             </tr>
           </thead>
           <tbody>
-            {getuserdata
-              .filter((e) => {
-                return search.toLowerCase() === ""
-                  ? e
-                  : e.plan.toLowerCase().includes(search);
-              })
-              .map((e, id) => (
-                <tr key={e.id}>
-                  <td className="fsize13 w-10 textforth">
-                    <p>{id + 1}</p>
-                  </td>
-                  <td className="fsize13 w-40 textforth">
-                    <p>{e.plan}</p>
-                  </td>
-                  <td className="fsize13 w-20 textforth">
-                    <p>{new Date(e.createdAt).toDateString()}</p>
-                  </td>
-                  <td className="fsize13 w-20 textforth">
-                    <p>{new Date(e.updatedAt).toDateString()}</p>
-                  </td>
-                  <td className="fsize13 w-10 textforth plpx15">
-                    <NavLink to={`/editplan2/${e._id}`}>
+            {getuserdata.map((e) => (
+              <tr>
+                <td className="fsize13 w-40 textforth">
+                  <p>{e.plan}</p>
+                </td>
+                <td className="fsize13 w-30 textforth">
+                  <p>{new Date(e.createdAt).toDateString()}</p>
+                </td>
+                <td className="fsize13 w-20 textforth">
+                  {e.status === true ? (
+                    <>
                       {" "}
-                      <FeatherIcon
-                        icon="edit"
-                        className="textgray cursor-pointer"
-                        size={16}
-                      />
-                    </NavLink>
-
+                      <p
+                        onClick={() => statustrue(e._id)}
+                        className="cursor-pointer"
+                      >
+                        true
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <p
+                        onClick={() => statusfalse(e._id)}
+                        className="cursor-pointer"
+                      >
+                        false
+                      </p>
+                    </>
+                  )}
+                </td>
+                <td className="fsize13 w-10 textforth plpx15">
+                  <NavLink to={`/editplan/${e._id}`}>
+                    {" "}
                     <FeatherIcon
-                      onClick={() => deleteuser(e._id)}
-                      icon="trash"
-                      className="textgray mlpx4 cursor-pointer"
+                      icon="edit"
+                      className="textgray cursor-pointer"
                       size={16}
                     />
-                  </td>
-                </tr>
-              ))}
+                  </NavLink>
+
+                  <FeatherIcon
+                    onClick={() => deleteuser(e._id)}
+                    icon="trash"
+                    className="textgray mlpx4 cursor-pointer"
+                    size={16}
+                  />
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
+        <div className="flex w-full justify-end">
+          <ReactPaginate
+            className="pagination"
+            breakLabel="..."
+            nextLabel=">"
+            previousLabel="<"
+            pageCount={pageCount}
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={10}
+            renderOnZeroPageCount={null}
+          />
+        </div>
       </div>
     </div>
   );

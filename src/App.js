@@ -23,6 +23,8 @@ import EditImage from "./pages/admin/layouts/components/cms/components/imagecms/
 import Enquiry from "./pages/admin/layouts/components/enquiry/Enquiry";
 import EnquiryEdit from "./pages/admin/layouts/components/enquiry/components/basic/components/EnquiryEdit";
 import EnquiryEdit2 from "./pages/admin/layouts/components/enquiry/components/premium/components/EnquiryEdit";
+import EnquiryEdit3 from "./pages/admin/layouts/components/enquiry/components/superpremium/components/EnquiryEdit";
+import Coming from "./pages/admin/layouts/components/coming/Coming";
 
 const  App = () => {
   return (
@@ -35,11 +37,22 @@ const  App = () => {
           <div className="w-route">
             <Header />
             <Routes>
-              {/* ======================= Start-pages ======================= */}
               <Route path="/" element={<Login />} />
-              <Route path="/dashboard" element={<Dashboard />} />
+              {/* ======================= Start-Login ======================= */}
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              {/* ======================= Start-Login ======================= */}
+              {/* ======================= Start-Pages ======================= */}
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/subscription" element={<Subscription />} />
+              <Route path="/editplan/:id" element={<PlanEdit />} />
+              <Route path="/editplan2/:id" element={<PlanEdit2 />} />
+              <Route path="/editplan3/:id" element={<PlanEdit3 />} />
+              <Route path="/enquiry" element={<Enquiry />} />
+              <Route path="/editenquiry/:id" element={<EnquiryEdit />} />
+              <Route path="/editenquiry2/:id" element={<EnquiryEdit2 />} />
+              <Route path="/editenquiry3/:id" element={<EnquiryEdit3 />} />
+              <Route path="/project" element={<Project />} />
               <Route path="/crm" element={<Crm />} />
               <Route path="/blogs" element={<Blog />} />
               <Route path="/elearning" element={<Elearning />} />
@@ -50,19 +63,11 @@ const  App = () => {
               <Route path="/editimage/:id" element={<EditImage />} />
               <Route path="/seo" element={<Seo />} />
               <Route path="/editseo/:id" element={<EditSeo />} />
-              <Route path="/project" element={<Project />} />
               <Route path="/billing" element={<Billing />} />
-              <Route path="/subscription" element={<Subscription />} />
-              <Route path="/enquiry" element={<Enquiry />} />
-              <Route path="/editenquiry/:id" element={<EnquiryEdit />} />
-              <Route path="/editenquiry2/:id" element={<EnquiryEdit2 />} />
-              <Route path="/editplan/:id" element={<PlanEdit />} />
-              <Route path="/editplan2/:id" element={<PlanEdit2 />} />
-              <Route path="/editplan3/:id" element={<PlanEdit3 />} />
-              {/* ======================= End-pages ======================= */}
-
+              {/* ======================= End-Pages ======================= */}
               {/* ======================= Start-Error ======================= */}
               <Route path="*" element={<Error />} />
+              <Route path="/coming" element={<Coming />} />
               {/* ======================= End-Error ======================= */}
             </Routes>
           </div>
