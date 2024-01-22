@@ -36,13 +36,13 @@ const Sidebar = () => {
       id: 2,
       name: "Brands",
       icon: "aperture",
-      route: "subscription",
+      route: "brands",
     },
     {
       id: 3,
       name: "Reviews",
       icon: "star",
-      route: "subscription",
+      route: "review",
     },
   ];
   const sidebarmenu4 = [

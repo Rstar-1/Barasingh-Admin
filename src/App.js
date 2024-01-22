@@ -25,6 +25,11 @@ import EnquiryEdit from "./pages/admin/layouts/components/enquiry/components/bas
 import EnquiryEdit2 from "./pages/admin/layouts/components/enquiry/components/premium/components/EnquiryEdit";
 import EnquiryEdit3 from "./pages/admin/layouts/components/enquiry/components/superpremium/components/EnquiryEdit";
 import Coming from "./pages/admin/layouts/components/coming/Coming";
+import EditProject from "./pages/admin/layouts/components/project/components/EditProject";
+import Brands from "./pages/admin/layouts/components/brands/Brands";
+import EditBrand from "./pages/admin/layouts/components/brands/components/EditBrand";
+import Review from "./pages/admin/layouts/components/review/Review";
+import EditReview from "./pages/admin/layouts/components/review/components/EditReview";
 
 const  App = () => {
   return (
@@ -53,6 +58,11 @@ const  App = () => {
               <Route path="/editenquiry2/:id" element={<EnquiryEdit2 />} />
               <Route path="/editenquiry3/:id" element={<EnquiryEdit3 />} />
               <Route path="/project" element={<Project />} />
+              <Route path="/editproject/:id" element={<EditProject />} />
+              <Route path="/brands" element={<Brands />} />
+              <Route path="/editbrand/:id" element={<EditBrand />} />
+              <Route path="/review" element={<Review />} />
+              <Route path="/editreview/:id" element={<EditReview />} />
               <Route path="/crm" element={<Crm />} />
               <Route path="/blogs" element={<Blog />} />
               <Route path="/elearning" element={<Elearning />} />

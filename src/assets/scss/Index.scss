@@ -559,14 +559,37 @@ tr:nth-child(even):hover {
 .bord-tab {
   border-bottom: 2px solid #ececec !important;
 }
-.border-side {
-  border-right: 2px solid #ececec !important;
-}
 .cms-image {
   width: 50px !important;
   height: 50px !important;
 }
+.cms-edit-img {
+  width: 30% !important;
+  height: 150px !important;
+}
 /* ======================= End-cms ======================= */
+
+/* ======================= Start-project ======================= */
+.project-image {
+  width: 100px !important;
+  height: 50px !important;
+}
+.project-edit-img {
+  width: 30% !important;
+  height: 150px !important;
+}
+/* ======================= End-project ======================= */
+
+/* ======================= Start-brand ======================= */
+.brand-image {
+  width: 100px !important;
+  height: 50px !important;
+}
+.brand-edit-img {
+  width: 30% !important;
+  height: 150px !important;
+}
+/* ======================= End-brand ======================= */
 
 /* ======================= Start-bill ======================= */
 .bill-img {

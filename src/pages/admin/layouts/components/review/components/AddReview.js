@@ -1,10 +1,10 @@
-import React, { useState } from "react";
 import axios from "axios";
+import React, { useState } from "react";
 
-const AddText = () => {
+const AddReview = () => {
   const [inpval, setInpval] = useState({
-    position: "",
-    title: "",
+    fullname: "",
+    message: "",
   });
   const setVal = (e) => {
     // console.log(e.target.value);
@@ -20,48 +20,47 @@ const AddText = () => {
     e.preventDefault();
     const response = await axios({
       method: "post",
-      url: "http://localhost:8000/api/textregister",
+      url: "http://localhost:8000/api/reviewsregister",
       data: {
         ...inpval,
       },
     });
     console.log(response.data);
     if (response.status === 201) {
-      alert("Cms Submited");
+      alert("Plan Submited");
       window.location.reload(true);
     } else {
-      alert("Cmss Not Submitted");
+      alert("Plans Not Submitted");
     }
   };
   return (
     <div>
       <div className="mtpx6 grid-cols-1 gap-12">
         <div className="w-full">
-          <label className="fsize13 textforth">Position</label>
+          <label className="fsize13 textforth">Add Plans</label>
           <div>
             <input
               className="side-input mtpx5 h-input fsize13 rounded-5 plpx10 border-ec"
-              placeholder="Enter Position"
+              placeholder="Enter Name"
               type="text"
-              value={inpval.position}
+              value={inpval.fullname}
               onChange={setVal}
-              name="position"
-              id="position"
+              name="fullname"
+              id="fullname"
             />
           </div>
         </div>
-
         <div className="w-full">
-          <label className="fsize13 textforth">Text</label>
+          <label className="fsize13 textforth">Add Plans</label>
           <div>
             <input
               className="side-input mtpx5 h-input fsize13 rounded-5 plpx10 border-ec"
-              placeholder="Enter Text"
+              placeholder="Enter Message"
               type="text"
-              value={inpval.text}
+              value={inpval.message}
               onChange={setVal}
-              name="title"
-              id="title"
+              name="message"
+              id="message"
             />
           </div>
         </div>
@@ -78,4 +77,4 @@ const AddText = () => {
   );
 };
 
-export default AddText;
+export default AddReview;

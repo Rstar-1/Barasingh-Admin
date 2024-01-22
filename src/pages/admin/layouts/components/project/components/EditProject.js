@@ -1,49 +1,53 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 import FeatherIcon from "feather-icons-react";
 
-const EditImage = () => {
-  const [Position, StepPosition] = useState("");
+const EditProject = () => {
+  let history = useNavigate();
+  // Form UseState
+  const [Name, StepName] = useState("");
   const [image, SetImage] = useState("");
+  const [File, setFile] = useState(null);
 
+  // Function
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
     console.log(e.target.files[0]);
   };
-  const [File, setFile] = useState(null);
 
+  // Single Id
   const { id } = useParams("");
-  console.log(id);
 
+  // API Call
   const getsingledata = async () => {
     const editresponse = await axios({
       method: "get",
-      url: `http://localhost:8000/api/getimagesingledata/${id}`,
+      url: `http://localhost:8000/api/getprojectsingledata/${id}`,
     });
-    StepPosition(editresponse.data.position);
+    StepName(editresponse.data.name);
     SetImage(editresponse.data.picture);
   };
-
   const editUserdata = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-     if (File) {
-       formData.append("image", File);
-     }
-    formData.append("position", Position);
+    if (File) {
+      formData.append("image", File);
+    }
+    formData.append("name", Name);
     const editresponse = await axios({
       method: "patch",
-      url: `http://localhost:8000/api/updateimagedata/${id}`,
+      url: `http://localhost:8000/api/updateprojectdata/${id}`,
       data: formData,
     });
     if (editresponse.status === 201) {
-      alert("completeda");
+      history("/project");
     } else {
-      alert("Category Not Submitted");
+      alert("Something went wrong");
     }
   };
 
+  // Render API
   useEffect(() => {
     getsingledata();
   }, []);
@@ -58,16 +62,16 @@ const EditImage = () => {
       <div className="mtpx18">
         <div className="grid-cols-1 w-60 gap-12">
           <div className="w-full">
-            <label className="fsize13 textforth">Position</label>
+            <label className="fsize13 textforth">Name</label>
             <div>
               <input
                 className="side-input mtpx5 h-input fsize13 rounded-5 plpx10 border-ec"
-                placeholder="Enter Position"
+                placeholder="Enter Name"
                 type="text"
-                value={Position}
-                onChange={(e) => StepPosition(e.target.value)}
-                name="position"
-                id="position"
+                value={Name}
+                onChange={(e) => StepName(e.target.value)}
+                name="Name"
+                id="Name"
               />
             </div>
           </div>
@@ -94,7 +98,7 @@ const EditImage = () => {
             <img
               src={image}
               alt="new"
-              className="object-contain mtpx10 bg-fa cms-edit-img"
+              className="object-contain mtpx10 bg-fa project-edit-img"
               crossOrigin="true"
             />
           </div>
@@ -112,4 +116,4 @@ const EditImage = () => {
   );
 };
 
-export default EditImage;
+export default EditProject;

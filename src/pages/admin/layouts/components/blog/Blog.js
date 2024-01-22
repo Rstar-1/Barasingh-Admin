@@ -1,309 +1,202 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import ReactPaginate from "react-paginate";
 import FeatherIcon from "feather-icons-react";
-import Select from "react-select";
-import BlogStatus from "./components/BlogStatus";
 
 const Blog = () => {
-  const [blogsidebar, setblogsidebar] = useState(false);
-  const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
-  ];
+  // API UseState Data
+  const [getuserdata, setUserdata] = useState([]);
+  // Search UseState Data
+  const [search, setsearchdata] = useState("");
+  // Pagination UseState Data
+  const [pageCount, setpageCount] = useState(0);
+  const [offset, setOffset] = useState(0);
+
+  // API Call
+  const getdata = async () => {
+    const payload = {};
+    if (search) {
+      Object.assign(payload, { search: search });
+    }
+    if (offset) {
+      Object.assign(payload, { offset: offset });
+    }
+    try {
+      const response = await axios({
+        method: "post",
+        url: "http://localhost:8000/api/getblogdata",
+        data: payload, // Pass the payload as data in the POST request
+      });
+
+      setUserdata(response.data.data);
+      setpageCount(Math.ceil(response.data.totalCount / 4));
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      // Handle the error as needed
+    }
+  };
+
+  // Function
+  const handlePageClick = (event) => {
+    console.log(event, "handle");
+    let page = event.selected + 1;
+    const curoffset = page > 1 ? (page - 1) * 4 : 0;
+    setOffset(curoffset);
+
+    getdata();
+  };
+  const statustrue = async (e) => {
+    const payload = {
+      status: false,
+    };
+    const editresponse = await axios({
+      method: "patch",
+      url: `http://localhost:8000/api/updateblogdata/${e}`,
+      data: payload,
+    });
+    //setupdate(editresponse);
+    if (editresponse.status === 201) {
+      window.location.reload(true);
+    } else {
+      alert("Category Not Submitted");
+    }
+  };
+  const statusfalse = async (e) => {
+    const payload = {
+      status: true,
+    };
+    const editresponse = await axios({
+      method: "patch",
+      url: `http://localhost:8000/api/updateblogdata/${e}`,
+      data: payload,
+    });
+    //setupdate(editresponse);
+    if (editresponse.status === 201) {
+      window.location.reload(true);
+    } else {
+      alert("Category Not Submitted");
+    }
+  };
+
+  // Render API
+  useEffect(() => {
+    getdata();
+  }, [search]);
+
   return (
     <div className="bgwhite border-d mtpx9 cust-scroll p20">
-      {blogsidebar ? (
-        <div className="bg-glass2 fixed top-0 right-0 h-100 w-full z-99">
-          <div className="bgwhite d-shadow sidebar-w h-100 absolute right-0 top-0">
-            <div className="bgprimary p5">
-              <div className="flex items-center justify-between gap-4 plpx7 prpx7">
-                <p className="fsize15 textwhite mtpx4 mbpx4 cursor-pointer font-500">
-                  Blog Management
-                </p>
+      <h6 className="fsize20 textprimary mtpx1 mbpx1 font-600">Blog Management</h6>
+      <div className="mtpx18 rounded-10 border-ec p20">
+        <div className="mtpx5 mbpx15 flex gap-12 items-center">
+          <div className="w-60">
+            <div className="relative">
+              <input
+                className="w-full h-input fsize14 rounded-5 plpx10 border-ec"
+                placeholder="Search"
+                onChange={(e) => setsearchdata(e.target.value)}
+              />
+              <div className="absolute top-0 right-0 mtpx9 mrpx2">
                 <FeatherIcon
-                  icon="x"
-                  className="textwhite cursor-pointer"
-                  size={17}
-                  onClick={() => setblogsidebar(false)}
+                  icon="search"
+                  className="textgray cursor-pointer"
+                  size={20}
                 />
               </div>
-            </div>
-            <div className="p10 side-scroll">
-              <BlogStatus />
             </div>
           </div>
         </div>
-      ) : null}
-      <div className="">
-        <h6 className="fsize20 textprimary mtpx1 mbpx1 font-600">
-          Blog Management
-        </h6>
-        <div className="mtpx18 rounded-10 border-ec p20">
-          <div className="mtpx5 mbpx15 flex gap-12 items-center">
-            <div className="w-60">
-              <div className="relative">
-                <input
-                  className="w-full h-input fsize14 rounded-5 plpx10 border-ec"
-                  placeholder="Search"
-                />
-                <div className="absolute top-0 right-0 mtpx9 mrpx2">
-                  <FeatherIcon
-                    icon="search"
-                    className="textgray cursor-pointer"
-                    size={20}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="w-40 mlpx15">
-              <Select
-                className="w-full fsize14"
-                placeholder="Category"
-                options={options}
-              />
-            </div>
-          </div>
-          <table>
-            <thead>
-              <tr>
-                <th className="fsize13 w-10 textwhite font-300">
-                  <p>Image</p>
-                </th>
-                <th className="fsize13 w-10 textwhite font-300">
-                  <p>Title</p>
-                </th>
-                <th className="fsize13 w-20 textwhite font-300">
-                  <p>Description</p>
-                </th>
-                <th className="fsize13 w-20 textwhite font-300">
-                  <p>Created Date</p>
-                </th>
-                <th className="fsize13 w-20 textwhite font-300">
-                  <p>Category</p>
-                </th>
-                <th className="fsize13 w-10 textwhite font-300">
-                  <p>Status</p>
-                </th>
-                <th className="fsize13 w-10 textwhite font-300">
-                  <p>Actions</p>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="fsize13 w-10 textforth">
-                  <img
-                    src="https://nexuscluster.blob.core.windows.net/server01/HOMECLIQ/multipleImage/poster-FZS682kyRPvBUM2gmdHQt-1697720366"
-                    alt="blog"
-                    className="blog-img"
-                  />
-                </td>
-                <td className="fsize13 w-10 textforth">
-                  <p>Lorem ipsum may be used</p>
-                </td>
-                <td className="fsize12 w-20 textforth">
-                  <p>
-                    In publishing and graphic design, Lorem ipsum is a
-                    placeholder text content.
-                  </p>
-                </td>
-                <td className="fsize13 w-20 textforth">
-                  <p>12/12/2023</p>
-                </td>
-                <td className="w-20 textforth">
-                  <div className="flex flex-wrap gap-6 items-center">
-                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
-                      Learnig
-                    </p>
-                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
-                      ecommerce
-                    </p>
-                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
-                      eLearnig
-                    </p>
-                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
-                      blog
-                    </p>
-                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
-                      new
-                    </p>
-                  </div>
-                </td>
-                <td className="fsize13 w-10 textsuccess">
-                  <p className="rounded-20 fsize12 textsuccess ptpx3 pbpx3 plpx15 prpx15 flex justify-center bg-light-success">
-                    Active
-                  </p>
-                </td>
-                <td className="fsize13 w-10 textforth plpx15">
-                  <FeatherIcon
-                    icon="edit"
-                    className="textgray cursor-pointer"
-                    onClick={() => setblogsidebar(true)}
-                    size={16}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td className="fsize13 w-10 textforth">
-                  <img
-                    src="https://nexuscluster.blob.core.windows.net/server01/HOMECLIQ/multipleImage/poster-FZS682kyRPvBUM2gmdHQt-1697720366"
-                    alt="blog"
-                    className="blog-img"
-                  />
-                </td>
-                <td className="fsize13 w-10 textforth">
-                  <p>Lorem ipsum may be used</p>
-                </td>
-                <td className="fsize12 w-20 textforth">
-                  <p>
-                    In publishing and graphic design, Lorem ipsum is a
-                    placeholder text content.
-                  </p>
-                </td>
-                <td className="fsize13 w-20 textforth">
-                  <p>12/12/2023</p>
-                </td>
-                <td className="w-20 textforth">
-                  <div className="flex flex-wrap gap-6 items-center">
-                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
-                      Learnig
-                    </p>
-                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
-                      ecommerce
-                    </p>
-                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
-                      eLearnig
-                    </p>
-                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
-                      blog
-                    </p>
-                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
-                      new
-                    </p>
-                  </div>
-                </td>
-                <td className="fsize13 w-10 textsuccess">
-                  <p className="rounded-20 fsize12 textsuccess ptpx3 pbpx3 plpx15 prpx15 flex justify-center bg-light-success">
-                    Active
-                  </p>
-                </td>
-                <td className="fsize13 w-10 textforth plpx15">
-                  <FeatherIcon
-                    icon="edit"
-                    className="textgray cursor-pointer"
-                    onClick={() => setblogsidebar(true)}
-                    size={16}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td className="fsize13 w-10 textforth">
-                  <img
-                    src="https://nexuscluster.blob.core.windows.net/server01/HOMECLIQ/multipleImage/poster-FZS682kyRPvBUM2gmdHQt-1697720366"
-                    alt="blog"
-                    className="blog-img"
-                  />
-                </td>
-                <td className="fsize13 w-10 textforth">
-                  <p>Lorem ipsum may be used</p>
-                </td>
-                <td className="fsize12 w-20 textforth">
-                  <p>
-                    In publishing and graphic design, Lorem ipsum is a
-                    placeholder text content.
-                  </p>
-                </td>
-                <td className="fsize13 w-20 textforth">
-                  <p>12/12/2023</p>
-                </td>
-                <td className="w-20 textforth">
-                  <div className="flex flex-wrap gap-6 items-center">
-                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
-                      Learnig
-                    </p>
-                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
-                      ecommerce
-                    </p>
-                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
-                      eLearnig
-                    </p>
-                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
-                      blog
-                    </p>
-                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
-                      new
-                    </p>
-                  </div>
-                </td>
-                <td className="fsize13 w-10 textsuccess">
-                  <p className="rounded-20 fsize12 textsuccess ptpx3 pbpx3 plpx15 prpx15 flex justify-center bg-light-success">
-                    Active
-                  </p>
-                </td>
-                <td className="fsize13 w-10 textforth plpx15">
-                  <FeatherIcon
-                    icon="edit"
-                    className="textgray cursor-pointer"
-                    onClick={() => setblogsidebar(true)}
-                    size={16}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td className="fsize13 w-10 textforth">
-                  <img
-                    src="https://nexuscluster.blob.core.windows.net/server01/HOMECLIQ/multipleImage/poster-FZS682kyRPvBUM2gmdHQt-1697720366"
-                    alt="blog"
-                    className="blog-img"
-                  />
-                </td>
-                <td className="fsize13 w-10 textforth">
-                  <p>Lorem ipsum may be used</p>
-                </td>
-                <td className="fsize12 w-20 textforth">
-                  <p>
-                    In publishing and graphic design, Lorem ipsum is a
-                    placeholder text content.
-                  </p>
-                </td>
-                <td className="fsize13 w-20 textforth">
-                  <p>12/12/2023</p>
-                </td>
-                <td className="w-20 textforth">
-                  <div className="flex flex-wrap gap-6 items-center">
-                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
-                      Learnig
-                    </p>
-                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
-                      ecommerce
-                    </p>
-                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
-                      eLearnig
-                    </p>
-                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
-                      blog
-                    </p>
-                    <p className="rounded-20 fsize11 textwarning ptpx2 pbpx2 plpx13 prpx13 flex justify-center bg-light-warning">
-                      new
-                    </p>
-                  </div>
-                </td>
-                <td className="fsize13 w-10 textsuccess">
-                  <p className="rounded-20 fsize12 textsuccess ptpx3 pbpx3 plpx15 prpx15 flex justify-center bg-light-success">
-                    Active
-                  </p>
-                </td>
-                <td className="fsize13 w-10 textforth plpx15">
-                  <FeatherIcon
-                    icon="edit"
-                    className="textgray cursor-pointer"
-                    onClick={() => setblogsidebar(true)}
-                    size={16}
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <table>
+          <thead>
+            <tr>
+              <th className="fsize13 w-10 textwhite font-300">
+                <p>Image</p>
+              </th>
+              <th className="fsize13 w-20 textwhite font-300">
+                <p>Title</p>
+              </th>
+              <th className="fsize13 w-10 textwhite font-300">
+                <p>Description</p>
+              </th>
+              <th className="fsize13 w-20 textwhite font-300">
+                <p>Category</p>
+              </th>
+              <th className="fsize13 w-20 textwhite font-300">
+                <p>Created Date</p>
+              </th>
+              <th className="fsize13 w-10 textwhite font-300">
+                <p>Status</p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {getuserdata.map((e, id) => {
+              return (
+                <>
+                  <tr>
+                    <td className="fsize13 w-10 textforth">
+                      <img
+                        src={e.picture}
+                        alt="logo"
+                        className="blog-img object-contain"
+                      />
+                    </td>
+                    <td className="fsize13 w-20 textforth">
+                      <p>{e.title}</p>
+                    </td>
+                    <td className="fsize13 w-20 textforth">
+                      <p className="line-clamp2">{e.desc}</p>
+                    </td>
+                    <td className="w-10 textforth">
+                      <p className="prpx15 plpx15 ptpx3 pbpx3 fsize12 rounded-20 textprimary bg-light-primary w-max">
+                        {e.category}
+                      </p>
+                    </td>
+                    <td className="fsize12 w-20 textforth">
+                      <p>{new Date(e.createdAt).toDateString()}</p>
+                    </td>
+                    <td className="fsize12 w-20 textforth">
+                      {e.status === true ? (
+                        <>
+                          {" "}
+                          <p
+                            onClick={() => statustrue(e._id)}
+                            className="cursor-pointer"
+                          >
+                            <p className="prpx24 plpx24 ptpx3 pbpx3 fsize13 rounded-5 bgsuccess textwhite w-max">
+                              Publish
+                            </p>
+                          </p>
+                        </>
+                      ) : (
+                        <>
+                          <p
+                            onClick={() => statusfalse(e._id)}
+                            className="cursor-pointer"
+                          >
+                            <p className="prpx16 plpx16 ptpx3 pbpx3 fsize13 rounded-5 font-600 textwhite bgdanger w-max">
+                              Unpublish
+                            </p>
+                          </p>
+                        </>
+                      )}
+                    </td>
+                  </tr>
+                </>
+              );
+            })}
+          </tbody>
+        </table>
+        <div className="flex w-full justify-end">
+          <ReactPaginate
+            className="pagination"
+            breakLabel="..."
+            nextLabel=">"
+            previousLabel="<"
+            pageCount={pageCount}
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={4}
+            renderOnZeroPageCount={null}
+          />
         </div>
       </div>
     </div>

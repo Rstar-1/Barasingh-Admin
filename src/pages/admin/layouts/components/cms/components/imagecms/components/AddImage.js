@@ -3,18 +3,18 @@ import FeatherIcon from "feather-icons-react";
 import React, { useState } from "react";
 
 const AddImage = () => {
- const [Position, SetPosition] = useState("");
-  
+  const [Position, SetPosition] = useState("");
+  const [Image, setImage] = useState(null);
+
   const handleFileChange = (e) => {
     setImage(e.target.files[0]);
   };
-  const [Image, setImage] = useState(null);
   const addUserdata = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("position", Position);
     formData.append("image", Image);
-   
+    formData.append("position", Position);
+
     const response = await axios({
       method: "post",
       url: "http://localhost:8000/api/imageregister",
@@ -27,6 +27,7 @@ const AddImage = () => {
       alert("add Not Submitted");
     }
   };
+
   return (
     <div>
       <div className="mtpx6 grid-cols-1 gap-12">
